@@ -1,14 +1,17 @@
 name: PR Preview
 
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - synchronize
       - reopened
+      - closed
+      - ready_for_review
     paths:
       - 'build.gradle.kts'
       - 'src/**'
+      - '.github/workflows/pr-preview.yml'
 
 permissions:
   contents: read
@@ -55,9 +58,7 @@ jobs:
 
           # Pick a stable, unique domain per PR.
           # Surge domains are global, so include repo info to avoid collisions.
-          REPO_SLUG="${{ github.repository }}"              # owner/repo
-          REPO_SLUG="${REPO_SLUG//\//-}"                   # owner-repo
-          DOMAIN="pr-${PR_NUMBER}-${REPO_SLUG}.surge.sh"
+          DOMAIN="pr-${PR_NUMBER}-FTCBananaBox.surge.sh"
 
           # IMPORTANT: set this to the folder that contains index.html
           PUBLISH_DIR="build/mkdocs"
