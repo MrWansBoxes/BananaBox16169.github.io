@@ -9,10 +9,8 @@ on:
       - reopened
       - closed
       - ready_for_review
-    paths:
-      - 'build.gradle.kts'
-      - 'src/**'
-      - '.github/workflows/pr-preview.yml'
+    branches:
+      - main
 
 permissions:
   contents: read
