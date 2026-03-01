@@ -1,4 +1,4 @@
-site_name: FTC Banana Box 16169
+site_name: Banana Box
 site_url: https://www.ftcbananabox.com
 repo_name: MrWansBoxes/BananaBox16169.github.io
 repo_url: https://github.com/MrWansBoxes/BananaBox16169.github.io
@@ -51,6 +51,7 @@ theme:
     - navigation.tracking
     - search.suggest
     - toc.follow
+
 nav:
   - Home:
       - Welcome: index.md
@@ -69,8 +70,6 @@ nav:
       - Mentorship: Mentorship.md
   - Awards:
       - Awards: Awards.md
-
-
 
 markdown_extensions:
   - pymdownx.critic
@@ -104,6 +103,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/MrWansBoxes/BananaBox16169.github.io

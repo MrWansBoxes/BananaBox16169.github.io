@@ -16,3 +16,4 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 /local.properties
+/gradle/gradle-daemon-jvm.properties
