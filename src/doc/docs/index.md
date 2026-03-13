@@ -10,13 +10,13 @@ Welcome to FTC Team 16169 Banana Box’s website! We are a dedicated community t
 | Name                   | Position(s)                    |
 |------------------------|--------------------------------|
 | **Rayhan Riaz**        | Team Captain, Main Driver      |
-| **Stefan Barbu**       | Promoter, Mechanic             |
+| **Stefan Barbu**       | Scout, Mechanic                |
 | **Ethan Deandrea**     | Lead Programmer, Second Driver | 
-| **Kiaan Mehta**        | Mechanic, Drive Coach          |
+| **Kiaan Mehta**        | Programmer, Drive Coach        |
 | **Govind Valiyodiyil** | Vice-Captain, Lead Designer    |
-| **Matthew Dona**       | Lead Manufacturer, Mechanic    |
+| **Matthew Dona**       | Manufacturer, Lead Scout       |
 | **Aditya Biju**        | Lead Mechanic, Co-Human Player |
-| **Pranav Mantena**     | Lead Outreach, Human Player    |
+| **Pranav Mantena**     | Outreach, Human Player         |
 
 ## Our Team Goals
 
