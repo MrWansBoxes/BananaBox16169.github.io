@@ -14,7 +14,7 @@ const socials = [
       <p class="eyebrow">FTC {site.teamNumber} — {site.location}</p>
       <p class="foot__name">{site.teamName}</p>
       {site.email && (
-        <a class="foot__email" href={`mailto:${site.email}`}>{site.email}</a>
+        <a class="foot__email" href={site.contactUrl} target="_blank" rel="noopener">{site.email}</a>
       )}
     </div>
 
