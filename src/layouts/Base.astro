@@ -53,7 +53,7 @@ const desc = description ?? site.tagline;
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    }, { threshold: 0, rootMargin: "0px" });
     var sel = ".hero__text,.hero__media,.intro,.stat__cell,.card,.tl__item,.member,.award,.sponsor,.pagehead,.prose,.tl-head";
     document.querySelectorAll(sel).forEach(function (el) { io.observe(el); });
   })();
