@@ -58,11 +58,17 @@ const desc = description ?? site.tagline;
 
         // Before each page transition, clear the "revealed" marker on the
         // incoming page so the fade replays every time — including on Back.
-        document.addEventListener("astro:before-swap", function (e) {
-          e.newDocument.querySelectorAll(REVEAL_SEL).forEach(function (el) {
-            el.classList.remove("is-visible");
-          });
-        });
+        // After each swap (including Back/Forward), clear the "revealed"
+// marker on the live page so the fade replays every time.
+// Page transitions reset the <html> class list on every navigation,
+// which strips the "js" class that arms the fade. Re-add it (and clear
+// the revealed markers) after each swap, before the slide snapshots.
+document.addEventListener("astro:after-swap", function () {
+  document.documentElement.classList.add("js");
+  document.querySelectorAll(REVEAL_SEL).forEach(function (el) {
+    el.classList.remove("is-visible");
+  });
+});
 
         function setup() {
           bar = document.getElementById("scroll-progress");
