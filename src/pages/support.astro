@@ -14,7 +14,7 @@ const real = sponsors.filter((s) => s.name && !s.name.startsWith("Sponsor /"));
   <section class="wrap section" style="padding-top:0">
     <article class="prose"><Content /></article>
     <p style="margin-top:2rem">
-      <a class="btn btn--peel" href={`mailto:${site.email}`}>Get in touch</a>
+      <a class="btn btn--peel" href={site.contactUrl} target="_blank" rel="noopener">Get in touch</a>
     </p>
   </section>
   {real.length > 0 && (
