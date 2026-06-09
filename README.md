@@ -1,33 +1,85 @@
-# Banana Box web site
+# Banana Box — team website (Astro)
 
-## Website layout
-This website is built using [Mkdocs](https://www.mkdocs.org/user-guide) utilizing the [Mkdocs Gradle Plugin](https://xvik.github.io/gradle-mkdocs-plugin/latest/).
+A custom site for FTC Team 16169. You write **content** (text, data, photos);
+the design is handled for you. You should never need to touch HTML or CSS.
 
-Below is a layout of this repo and how it affects the website:
+---
 
-| File / Directory                                                           | Description                                                                                                       |
-|----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| [`src/doc/mkdocs.yml`](src/doc/mkdocs.yml)                                 | Main mkdocs config file. Add/modify the `nav` element to add additional pages                                     |
-| [`src/doc/docs`](src/doc/docs)                                             | Markdown files for the website content                                                                            |
-| [`src/doc/docs/index.md`](src/doc/docs/index.md)                           | Main page for the website. Can be modified to add content.                                                        |
-| [`src/doc/docs/stylesheets/extra.css`](src/doc/docs/stylesheets/extra.css) | Custom CSS for the website. Can be modified to change the look and feel. Currently contains a "Banana box" theme. |
-| [`src/doc/docs/assets/img`](src/doc/docs/assets/img)                       | Images for the website. Any images that you want to reference should be here.                                     |
+## What you edit (and nothing else)
 
-## Viewing the site locally
-If you'd like to render the site locally, just run `gradlew mkdocsServe`. You'll see something like this:
+| To change…                | Edit this file                     |
+| ------------------------- | ---------------------------------- |
+| Team name, tagline, email, social links | `src/data/site.yaml`     |
+| Home page number strip    | `src/data/stats.yaml`              |
+| Team roster               | `src/data/team.yaml`               |
+| Season timeline           | `src/data/milestones.yaml`         |
+| Awards list               | `src/data/awards.yaml`             |
+| Sponsors                  | `src/data/sponsors.yaml`           |
+| Home page intro paragraph | `src/copy/home-intro.md`           |
+| Robot page writeup        | `src/copy/robot.md`                |
+| Outreach page writeup     | `src/copy/outreach.md`             |
+| Support page writeup      | `src/copy/support.md`              |
+| Photos                    | drop files into `public/images/`   |
+
+The `.yaml` files use a simple `label: value` format with comments (lines
+starting with `#`) that explain each part. The `.md` files are plain Markdown —
+the same thing you wrote in MkDocs.
+
+### Adding a photo
+
+1. Put the image file in `public/images/` (e.g. `public/images/robot.jpg`).
+2. Reference it:
+   - In Markdown: `![Our 2026 robot](/images/robot.jpg)`
+   - In a data file (team/sponsor): `photo: "robot.jpg"`
+3. For the big home-page robot photo, open `src/pages/index.astro` and follow
+   the one-line instruction in the comment near `hero__media`.
+
+---
+
+## Running it on your Mac
+
+You need Node.js once. If you don't have it:
 
 ```bash
-> Task :mkdocsServe
-[python] /Users/edeandre/workspaces/IntelliJ/BananaBox16169.github.io/.gradle/python/bin/python -m mkdocs serve -s --dev-addr 127.0.0.1:3000
-         INFO    -  Building documentation...
-         INFO    -  Cleaning site directory
-         INFO    -  Documentation built in 0.12 seconds
-         INFO    -  [15:25:33] Serving on http://127.0.0.1:3000/BananaBox16169/
+brew install node
 ```
 
-You can open your browser to http://127.0.0.1:3000/ to view the site.
+Then, from inside this project folder:
 
-## Publishing the site
-The site will auto-publish to GitHub Pages when a commit is pushed to the `main` branch, either via a pull request (recommended) or direct push (not recommended).
+```bash
+npm install      # one time only — downloads what Astro needs
+npm run dev      # starts a live preview
+```
 
-The [`.github/workflows/docs.yml`](.github/workflows/docs.yml) workflow file is responsible for publishing the site.
+Open the address it prints (usually `http://localhost:4321`). Leave it running;
+the page updates as you save files.
+
+To stop it, press `Ctrl + C` in the terminal.
+
+---
+
+## Putting it online (GitHub Pages)
+
+This deploys the same way your old site did — push to `main` and it publishes.
+
+One-time setup on GitHub:
+
+1. Replace the **whole** contents of your repo with this project's files.
+   (Delete the old MkDocs files: `src/doc/`, `build.gradle.kts`, `gradlew`,
+   `gradle/`, etc. Keep `.git`, `LICENSE`, and `README.md`.)
+2. On GitHub: **Settings → Pages → Build and deployment → Source** →
+   choose **GitHub Actions** (it was probably "Deploy from a branch" before).
+3. Confirm `public/CNAME` says your real domain. It currently says
+   `www.ftcbananabox.com` — change it if your domain settings use the bare
+   `ftcbananabox.com` instead.
+4. Commit and push to `main`. The workflow in `.github/workflows/deploy.yml`
+   builds the site and publishes it. Check progress under the repo's **Actions** tab.
+
+After that, every push to `main` re-publishes automatically.
+
+---
+
+## Adding a new page later
+
+Ask for help, or copy an existing file in `src/pages/` (e.g. `awards.astro`),
+rename it, and add it to the menu list inside `src/components/Nav.astro`.

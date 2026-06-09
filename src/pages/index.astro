@@ -1,0 +1,110 @@
+---
+import Base from "../layouts/Base.astro";
+import StatStrip from "../components/StatStrip.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import Timeline from "../components/Timeline.astro";
+import site from "../data/site.yaml";
+import { Content as Intro } from "../copy/home-intro.md";
+---
+
+<Base>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__text">
+        <p class="eyebrow">FTC {site.teamNumber} — {site.location}</p>
+        <h1 class="hero__title">{site.teamName}</h1>
+        <p class="hero__tag">{site.tagline}</p>
+        <div class="hero__actions">
+          <a class="btn btn--peel" href="/robot">See the robot</a>
+          <a class="btn btn--ghost" href="/outreach">Our impact</a>
+        </div>
+      </div>
+
+      <!-- To use a real photo: replace this whole <div class="hero__media"> ...
+           </div> block with:
+           <div class="hero__media"><img src="/images/robot.jpg" alt="Our robot" /></div>
+           (drop robot.jpg into public/images/ first) -->
+      <div class="hero__media hero__media--placeholder">
+        <span>Add your robot photo<br />→ public/images/robot.jpg</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS ===================== -->
+  <StatStrip />
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="section">
+    <div class="wrap intro">
+      <p class="eyebrow">Who we are</p>
+      <div class="prose intro__body"><Intro /></div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPLORE ===================== -->
+  <section class="section section--paper2">
+    <div class="wrap">
+      <p class="eyebrow">Explore</p>
+      <div class="cards">
+        <FeatureCard href="/robot" index="01" title="The Robot"
+          blurb="Design, strategy, and the code that drives it." />
+        <FeatureCard href="/outreach" index="02" title="Outreach & Impact"
+          blurb="Workshops, events, and reaching 20,000+ people." />
+        <FeatureCard href="/awards" index="03" title="Awards"
+          blurb="Recognition earned across the season." />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TIMELINE ===================== -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Season timeline</p>
+      <h2 class="tl-head">Where we've been, month by month.</h2>
+      <Timeline />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: clamp(48px, 8vw, 110px); }
+  .hero__inner {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .hero__title {
+    font-size: clamp(3.4rem, 12vw, 8rem); line-height: 0.9;
+    margin: 0.2em 0 0; text-transform: uppercase;
+  }
+  .hero__tag {
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: var(--bruise);
+    max-width: 34ch; margin: 1.3rem 0 0;
+  }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
+
+  .hero__media {
+    aspect-ratio: 4 / 3; border: 2px solid var(--ink);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: 10px 10px 0 var(--peel);
+  }
+  .hero__media img { width: 100%; height: 100%; object-fit: cover; }
+  .hero__media--placeholder {
+    display: grid; place-items: center; text-align: center;
+    background: repeating-linear-gradient(45deg, var(--paper-2) 0 14px, var(--paper) 14px 28px);
+    color: var(--bruise); font-family: var(--font-mono); font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .intro__body { font-size: clamp(1.15rem, 1.8vw, 1.5rem); line-height: 1.5; max-width: 40ch; }
+  .intro__body :global(strong) { background: var(--peel); padding: 0 0.15em; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 1.5rem; }
+  .tl-head { max-width: 22ch; margin: 0.6rem 0 2.5rem; }
+
+  @media (max-width: 860px) {
+    .hero__inner { grid-template-columns: 1fr; }
+    .hero__media { order: -1; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>

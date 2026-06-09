@@ -1,0 +1,18 @@
+# ============================================================
+# STAT STRIP  —  the row of numbers on the home page.
+# Each item has a "value" (the big part) and a "label" (small caption).
+# Add or remove items by copying/deleting a "- value/label" block.
+# Keep them to 4 for the cleanest look.
+# ============================================================
+
+- value: "16169"
+  label: "Team Number"
+
+- value: "2019"
+  label: "Founded"
+
+- value: "20K+"
+  label: "People Reached"
+
+- value: "NH"
+  label: "Region"

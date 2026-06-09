@@ -1,0 +1,124 @@
+/* ============================================================
+   BANANA BOX — design system
+   You normally won't need to edit this file. Colors and fonts
+   are defined once here as "tokens" and reused everywhere.
+   ============================================================ */
+
+:root {
+  /* ---- Color (a "banana engineering" palette) ---- */
+  --ink:        #1B1A17;  /* warm near-black — main text + dark blocks   */
+  --ink-soft:   #34322C;  /* slightly lifted ink for dark-block text      */
+  --paper:      #F6F2E9;  /* warm off-white — the default page background  */
+  --paper-2:    #EFEADC;  /* a touch deeper, for alternating sections      */
+  --peel:       #FFCA1A;  /* banana yellow — the signature, used in blocks */
+  --peel-deep:  #E0A400;  /* deeper amber — hovers + depth                 */
+  --bruise:     #6B5836;  /* warm brown — secondary / muted text           */
+  --leaf:       #2F4A34;  /* deep green — a rare secondary accent          */
+  --line:       #1B1A17;  /* hard borders share the ink color             */
+
+  /* ---- Type ---- */
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body:    "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  /* ---- Spacing / shape ---- */
+  --radius: 6px;
+  --maxw: 1200px;
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+/* ---- Reset-ish base ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.05vw + 13px, 18px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* ---- Headings ---- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+h1 { font-size: clamp(2.6rem, 7vw, 5.4rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.01em; }
+
+/* ---- Layout helpers ---- */
+.wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: clamp(56px, 9vw, 120px); }
+.section--paper2 { background: var(--paper-2); }
+.section--ink { background: var(--ink); color: var(--paper); }
+
+/* ---- The signature: a "telemetry" eyebrow label ---- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bruise);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6ch;
+  margin: 0 0 1.1rem;
+}
+.section--ink .eyebrow { color: var(--peel); }
+.eyebrow::before { content: "//"; color: var(--peel-deep); font-weight: 700; }
+.section--ink .eyebrow::before { color: var(--peel); }
+
+/* ---- Buttons ---- */
+.btn {
+  --bg: var(--ink);
+  --fg: var(--paper);
+  display: inline-flex; align-items: center; gap: 0.6ch;
+  font-family: var(--font-mono);
+  font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85em 1.4em;
+  background: var(--bg); color: var(--fg);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  transition: transform 0.12s ease, background 0.15s ease, color 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--peel { --bg: var(--peel); --fg: var(--ink); }
+.btn--peel:hover { --bg: var(--peel-deep); }
+.btn--ghost { --bg: transparent; --fg: var(--ink); }
+.btn--ghost:hover { --bg: var(--ink); --fg: var(--paper); }
+
+/* ---- Prose (rendered markdown body copy) ---- */
+.prose { max-width: 68ch; }
+.prose p { margin: 0 0 1.1em; }
+.prose h2 { margin: 2em 0 0.5em; }
+.prose h3 { margin: 1.6em 0 0.4em; }
+.prose ul, .prose ol { margin: 0 0 1.1em; padding-left: 1.3em; }
+.prose li { margin-bottom: 0.4em; }
+.prose a { color: var(--leaf); text-underline-offset: 3px; }
+.prose img { border: 2px solid var(--line); border-radius: var(--radius); margin: 1.4em 0; }
+.prose table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.95rem; }
+.prose th, .prose td { border: 1.5px solid var(--line); padding: 0.55em 0.8em; text-align: left; }
+.prose th { background: var(--peel); font-family: var(--font-mono); font-size: 0.8rem;
+            letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* ---- Page header band (non-home pages) ---- */
+.pagehead { padding-block: clamp(48px, 8vw, 96px) clamp(28px, 4vw, 48px); }
+.pagehead h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); }
+.pagehead p { color: var(--bruise); max-width: 60ch; margin-top: 1rem; font-size: 1.05rem; }
+
+/* ---- Accessibility / motion ---- */
+:focus-visible { outline: 3px solid var(--leaf); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto; }
+}

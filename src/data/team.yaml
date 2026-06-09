@@ -1,0 +1,38 @@
+# ============================================================
+# THE TEAM  —  one block per member.
+# "photo" is OPTIONAL: drop a photo in  public/images/team/
+# and put its file name here (e.g. photo: "team/rayhan.jpg").
+# Leave photo blank ("") to show initials instead.
+# ============================================================
+
+- name: "Rayhan Riaz"
+  role: "Team Captain, Main Driver"
+  photo: ""
+
+- name: "Stefan Barbu"
+  role: "Scout, Mechanic"
+  photo: ""
+
+- name: "Ethan Deandrea"
+  role: "Lead Programmer, Second Driver"
+  photo: ""
+
+- name: "Kiaan Mehta"
+  role: "Programmer, Drive Coach"
+  photo: ""
+
+- name: "Govind Valiyodiyil"
+  role: "Vice-Captain, Lead Designer"
+  photo: ""
+
+- name: "Matthew Dona"
+  role: "Manufacturer, Lead Scout"
+  photo: ""
+
+- name: "Aditya Biju"
+  role: "Lead Mechanic, Co-Human Player"
+  photo: ""
+
+- name: "Pranav Mantena"
+  role: "Outreach, Human Player"
+  photo: ""

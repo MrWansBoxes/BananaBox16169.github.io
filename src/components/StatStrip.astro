@@ -1,0 +1,38 @@
+---
+import stats from "../data/stats.yaml";
+---
+
+<section class="section--ink stat">
+  <div class="wrap stat__row">
+    {stats.map((s) => (
+      <div class="stat__cell">
+        <span class="stat__value">{s.value}</span>
+        <span class="stat__label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .stat { padding-block: clamp(32px, 5vw, 56px); }
+  .stat__row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .stat__cell {
+    display: flex; flex-direction: column; gap: 0.4rem;
+    padding-left: 1rem; border-left: 3px solid var(--peel);
+  }
+  .stat__value {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1;
+    color: var(--paper);
+  }
+  .stat__label {
+    font-family: var(--font-mono); font-size: 0.74rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--peel);
+  }
+  @media (max-width: 640px) {
+    .stat__row { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1.2rem; }
+  }
+</style>

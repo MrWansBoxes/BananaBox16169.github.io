@@ -1,0 +1,22 @@
+---
+import Base from "../layouts/Base.astro";
+import Timeline from "../components/Timeline.astro";
+import { Content } from "../copy/outreach.md";
+---
+<Base title="Outreach" description="How Banana Box brings FIRST to thousands of people.">
+  <section class="wrap pagehead">
+    <p class="eyebrow">Community</p>
+    <h1>Outreach &amp; impact</h1>
+    <p>Spreading FIRST robotics through workshops, events, and partnerships.</p>
+  </section>
+  <section class="wrap section" style="padding-top:0">
+    <article class="prose"><Content /></article>
+  </section>
+  <section class="section section--paper2">
+    <div class="wrap">
+      <p class="eyebrow">Season timeline</p>
+      <h2 style="margin:0.4rem 0 2.4rem;max-width:22ch">Robot and outreach, month by month.</h2>
+      <Timeline />
+    </div>
+  </section>
+</Base>

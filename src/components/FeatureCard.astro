@@ -1,0 +1,36 @@
+---
+const { href, index, title, blurb } = Astro.props;
+---
+
+<a class="card" href={href}>
+  <span class="card__index">{index}</span>
+  <span class="card__body">
+    <span class="card__title">{title}</span>
+    <span class="card__blurb">{blurb}</span>
+  </span>
+  <span class="card__go" aria-hidden="true">→</span>
+</a>
+
+<style>
+  .card {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: start;
+    gap: 1.1rem; text-decoration: none; color: var(--ink);
+    background: var(--paper); border: 2px solid var(--ink);
+    border-radius: var(--radius); padding: 1.6rem 1.5rem;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+  }
+  .card:hover { transform: translateY(-4px); background: var(--peel);
+    box-shadow: 8px 8px 0 var(--ink); }
+  .card__index {
+    font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600;
+    color: var(--bruise); padding-top: 0.35rem;
+  }
+  .card__title {
+    display: block; font-family: var(--font-display); font-weight: 800;
+    font-size: 1.5rem; line-height: 1.05; margin-bottom: 0.4rem;
+  }
+  .card__blurb { color: var(--bruise); font-size: 0.95rem; }
+  .card:hover .card__blurb { color: var(--ink); }
+  .card__go { font-size: 1.5rem; align-self: center; transition: transform 0.14s ease; }
+  .card:hover .card__go { transform: translateX(4px); }
+</style>

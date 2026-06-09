@@ -1,0 +1,14 @@
+# ============================================================
+# SPONSORS  —  one block per sponsor. Delete this whole file's
+# contents (leave it as "[]") if you have none yet.
+# "logo" is optional: drop a logo in public/images/sponsors/
+# and reference it (e.g. logo: "sponsors/acme.png").
+# ============================================================
+
+- name: "Sponsor / partner name"
+  url: "https://example.com"
+  logo: ""
+
+- name: "Sponsor / partner name"
+  url: ""
+  logo: ""
