@@ -35,5 +35,28 @@ const desc = description ?? site.tagline;
       <slot />
     </main>
     <Footer />
+<script is:inline>
+  (function () {
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) return;
+    [".stat__row", ".cards", ".tl", ".grid", ".awards", ".sponsors"].forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (group) {
+        Array.prototype.forEach.call(group.children, function (child, i) {
+          child.style.setProperty("--reveal-delay", i * 80 + "ms");
+        });
+      });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    var sel = ".hero__text,.hero__media,.intro,.stat__cell,.card,.tl__item,.member,.award,.sponsor,.pagehead,.prose,.tl-head";
+    document.querySelectorAll(sel).forEach(function (el) { io.observe(el); });
+  })();
+</script>
   </body>
 </html>
