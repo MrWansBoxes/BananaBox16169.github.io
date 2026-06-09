@@ -122,3 +122,22 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.01em; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto; }
 }
+/* ---- Scroll reveal ---- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js :is(
+    .hero__text, .hero__media, .intro, .stat__cell, .card, .tl__item,
+    .member, .award, .sponsor, .pagehead, .prose, .tl-head
+  ) {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  html.js :is(
+    .hero__text, .hero__media, .intro, .stat__cell, .card, .tl__item,
+    .member, .award, .sponsor, .pagehead, .prose, .tl-head
+  ).is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
