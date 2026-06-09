@@ -25,8 +25,8 @@ import { Content as Intro } from "../copy/home-intro.md";
            </div> block with:
            <div class="hero__media"><img src="/images/robot.jpg" alt="Our robot" /></div>
            (drop robot.jpg into public/images/ first) -->
-      <div class="hero__media hero__media--placeholder">
-        <span>Add your robot photo<br />→ public/images/robot.jpg</span>
+      <div class="hero__media"><img src="/images/team/Robot.png" alt="Our robot" /></div>
+        <span>Add your robot photo<br />→ public/images/team/Robot.png</span>
       </div>
     </div>
   </section>
@@ -50,7 +50,7 @@ import { Content as Intro } from "../copy/home-intro.md";
         <FeatureCard href="/robot" index="01" title="The Robot"
           blurb="Design, strategy, and the code that drives it." />
         <FeatureCard href="/outreach" index="02" title="Outreach & Impact"
-          blurb="Workshops, events, and reaching 20,000+ people." />
+          blurb="Workshops, events, and reaching 24,000+ people." />
         <FeatureCard href="/awards" index="03" title="Awards"
           blurb="Recognition earned across the season." />
       </div>
@@ -88,7 +88,7 @@ import { Content as Intro } from "../copy/home-intro.md";
     border-radius: var(--radius); overflow: hidden;
     box-shadow: 10px 10px 0 var(--peel);
   }
-  .hero__media img { width: 100%; height: 100%; object-fit: cover; }
+  .hero__media img { width: 100%; height: 100%; object-fit: contain; }
   .hero__media--placeholder {
     display: grid; place-items: center; text-align: center;
     background: repeating-linear-gradient(45deg, var(--paper-2) 0 14px, var(--paper) 14px 28px);
