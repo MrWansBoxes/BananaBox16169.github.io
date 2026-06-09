@@ -43,6 +43,7 @@ const desc = description ?? site.tagline;
         if (window.__bbMotion) return;
         window.__bbMotion = true;
 
+        var REVEAL_SEL = ".hero__text,.hero__media,.intro,.stat__cell,.card,.tl__item,.member,.award,.sponsor,.pagehead,.prose,.tl-head";
         var bar = null;
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -54,6 +55,14 @@ const desc = description ?? site.tagline;
         }
         window.addEventListener("scroll", updateBar, { passive: true });
         window.addEventListener("resize", updateBar);
+
+        // Before each page transition, clear the "revealed" marker on the
+        // incoming page so the fade replays every time — including on Back.
+        document.addEventListener("astro:before-swap", function (e) {
+          e.newDocument.querySelectorAll(REVEAL_SEL).forEach(function (el) {
+            el.classList.remove("is-visible");
+          });
+        });
 
         function setup() {
           bar = document.getElementById("scroll-progress");
@@ -75,9 +84,8 @@ const desc = description ?? site.tagline;
                 io.unobserve(entry.target);
               }
             });
-          }, { threshold: 0.15, rootMargin: "0px" });
-          var sel = ".hero__text,.hero__media,.intro,.stat__cell,.card,.tl__item,.member,.award,.sponsor,.pagehead,.prose,.tl-head";
-          document.querySelectorAll(sel).forEach(function (el) { io.observe(el); });
+          }, { threshold: 0.1, rootMargin: "0px" });
+          document.querySelectorAll(REVEAL_SEL).forEach(function (el) { io.observe(el); });
         }
 
         // Runs on first load AND after every page transition
