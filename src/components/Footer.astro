@@ -1,0 +1,61 @@
+---
+import site from "../data/site.yaml";
+const year = new Date().getFullYear();
+const socials = [
+  { href: site.instagram, label: "Instagram" },
+  { href: site.youtube, label: "YouTube" },
+  { href: site.github, label: "GitHub" },
+].filter((s) => s.href);
+---
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <div class="foot__brand">
+      <p class="eyebrow">FTC {site.teamNumber} — {site.location}</p>
+      <p class="foot__name">{site.teamName}</p>
+      {site.email && (
+        <a class="foot__email" href={`mailto:${site.email}`}>{site.email}</a>
+      )}
+    </div>
+
+    <nav class="foot__social" aria-label="Social">
+      {socials.map((s) => (
+        <a class="foot__link" href={s.href} target="_blank" rel="noopener">
+          {s.label} <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+  <div class="wrap foot__base">
+    <span>© {year} {site.teamName} · FIRST Tech Challenge Team {site.teamNumber}</span>
+  </div>
+</footer>
+
+<style>
+  .foot { background: var(--ink); color: var(--paper); }
+  .foot__inner {
+    display: flex; justify-content: space-between; flex-wrap: wrap;
+    gap: 2rem; padding-block: clamp(48px, 7vw, 80px) 2rem;
+  }
+  .foot .eyebrow { color: var(--peel); }
+  .foot .eyebrow::before { color: var(--peel); }
+  .foot__name { font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3rem); margin: 0; line-height: 1; }
+  .foot__email {
+    display: inline-block; margin-top: 0.9rem; color: var(--paper);
+    font-family: var(--font-mono); font-size: 0.9rem;
+    text-underline-offset: 3px;
+  }
+  .foot__email:hover { color: var(--peel); }
+  .foot__social { display: flex; flex-direction: column; gap: 0.4rem; }
+  .foot__link {
+    text-decoration: none; color: var(--paper);
+    font-family: var(--font-mono); font-size: 0.95rem;
+    transition: color 0.15s ease;
+  }
+  .foot__link:hover { color: var(--peel); }
+  .foot__base {
+    border-top: 1px solid #ffffff22; padding-block: 1.4rem 2rem;
+    font-family: var(--font-mono); font-size: 0.75rem; color: #ffffff99;
+  }
+</style>

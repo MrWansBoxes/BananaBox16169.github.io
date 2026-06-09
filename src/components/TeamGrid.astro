@@ -1,0 +1,45 @@
+---
+import team from "../data/team.yaml";
+const initials = (name) =>
+  name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+---
+
+<ul class="grid">
+  {team.map((m) => (
+    <li class="member">
+      <div class="member__photo">
+        {m.photo
+          ? <img src={`/images/${m.photo}`} alt={m.name} loading="lazy" />
+          : <span class="member__initials">{initials(m.name)}</span>}
+      </div>
+      <p class="member__name">{m.name}</p>
+      <p class="member__role">{m.role}</p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  .member__photo {
+    aspect-ratio: 1; border: 2px solid var(--ink); border-radius: var(--radius);
+    background: var(--peel); overflow: hidden;
+    display: grid; place-items: center;
+  }
+  .member__photo img { width: 100%; height: 100%; object-fit: cover; }
+  .member__initials {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: 2.6rem; color: var(--ink);
+  }
+  .member__name {
+    margin: 0.9rem 0 0.15rem; font-family: var(--font-display);
+    font-weight: 800; font-size: 1.2rem;
+  }
+  .member__role {
+    margin: 0; font-family: var(--font-mono); font-size: 0.78rem;
+    letter-spacing: 0.02em; color: var(--bruise);
+  }
+</style>

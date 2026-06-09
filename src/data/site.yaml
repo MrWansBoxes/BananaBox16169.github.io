@@ -1,0 +1,17 @@
+# ============================================================
+# SITE SETTINGS  —  edit the text after each colon.
+# Keep the quotes where they already exist.
+# ============================================================
+
+teamName: "Banana Box"
+teamNumber: "16169"
+location: "Windham, NH"
+
+# One short line that sums up the team. Shows under the big title on the home page.
+tagline: "A community FTC team building competitive robots and bringing FIRST to thousands."
+
+# Contact + social. To remove one, delete the whole line.
+email: "ftcbananabox16169@gmail.com"
+instagram: "https://www.instagram.com/bananabox_ftc_16169/"
+youtube: "https://www.youtube.com/@FTCBananaBox16169"
+github: "https://github.com/MrWansBoxes/BananaBox16169.github.io"

@@ -1,0 +1,14 @@
+# ============================================================
+# AWARDS  —  one block per award. Fill in your real awards.
+# "detail" is optional context (judge category, what it was for).
+# ============================================================
+
+- title: "Award name here"
+  event: "Event / competition name"
+  date: "Month Year"
+  detail: "One line on what this recognized."
+
+- title: "Award name here"
+  event: "Event / competition name"
+  date: "Month Year"
+  detail: ""

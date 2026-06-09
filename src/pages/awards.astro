@@ -1,0 +1,39 @@
+---
+import Base from "../layouts/Base.astro";
+import awards from "../data/awards.yaml";
+---
+<Base title="Awards" description="Recognition earned by FTC Team 16169 Banana Box.">
+  <section class="wrap pagehead">
+    <p class="eyebrow">Recognition</p>
+    <h1>Awards</h1>
+    <p>Honors earned on the field and in the judging room.</p>
+  </section>
+  <section class="wrap section" style="padding-top:0">
+    <ul class="awards">
+      {awards.map((a) => (
+        <li class="award">
+          <div class="award__date">{a.date}</div>
+          <div class="award__body">
+            <h3 class="award__title">{a.title}</h3>
+            <p class="award__event">{a.event}</p>
+            {a.detail && <p class="award__detail">{a.detail}</p>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .awards { list-style:none; margin:0; padding:0; display:grid; gap:1rem; }
+  .award {
+    display:grid; grid-template-columns:160px 1fr; gap:1.5rem;
+    border:2px solid var(--ink); border-radius:var(--radius);
+    padding:1.4rem 1.5rem; background:var(--paper);
+  }
+  .award__date { font-family:var(--font-mono); font-size:0.82rem; color:var(--bruise); padding-top:0.2rem; }
+  .award__title { margin:0; }
+  .award__event { margin:0.3rem 0 0; font-family:var(--font-mono); font-size:0.85rem; color:var(--bruise); }
+  .award__detail { margin:0.6rem 0 0; }
+  @media (max-width:640px){ .award{ grid-template-columns:1fr; gap:0.4rem; } }
+</style>

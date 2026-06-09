@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import { Content } from "../copy/support.md";
+import sponsors from "../data/sponsors.yaml";
+import site from "../data/site.yaml";
+const real = sponsors.filter((s) => s.name && !s.name.startsWith("Sponsor /"));
+---
+<Base title="Support" description="Support FTC Team 16169 Banana Box.">
+  <section class="wrap pagehead">
+    <p class="eyebrow">Get involved</p>
+    <h1>Support us</h1>
+    <p>Sponsorship, mentorship, and partnership keep Banana Box building.</p>
+  </section>
+  <section class="wrap section" style="padding-top:0">
+    <article class="prose"><Content /></article>
+    <p style="margin-top:2rem">
+      <a class="btn btn--peel" href={`mailto:${site.email}`}>Get in touch</a>
+    </p>
+  </section>
+  {real.length > 0 && (
+    <section class="section section--paper2">
+      <div class="wrap">
+        <p class="eyebrow">Our supporters</p>
+        <ul class="sponsors">
+          {real.map((s) => (
+            <li class="sponsor">
+              {s.url
+                ? <a href={s.url} target="_blank" rel="noopener">{s.name}</a>
+                : <span>{s.name}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .sponsors { list-style:none; margin:1.4rem 0 0; padding:0;
+    display:flex; flex-wrap:wrap; gap:1rem; }
+  .sponsor a, .sponsor span {
+    display:inline-block; border:2px solid var(--ink); border-radius:var(--radius);
+    padding:1rem 1.6rem; text-decoration:none; font-family:var(--font-display);
+    font-weight:800; background:var(--paper);
+  }
+  .sponsor a:hover { background:var(--peel); }
+</style>

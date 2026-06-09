@@ -1,0 +1,38 @@
+# ============================================================
+# TIMELINE  —  one block per entry, newest or oldest first
+# (they display in the order listed here).
+# "robot" and "outreach" can each be left blank ("") if nothing
+# happened in that category that month.
+# ============================================================
+
+- date: "April 2025"
+  robot: "CAD & Java programming refreshers"
+  outreach: "Plaistow Public Library & Londonderry YMCA — 105 participants"
+
+- date: "June–August 2025"
+  robot: "Belt-system drivetrain, Limelight learning, team development"
+  outreach: ""
+
+- date: "September 2025"
+  robot: ""
+  outreach: "Wicked STEM Festival & Thunder Over NH Airshow — 20,000+ participants"
+
+- date: "October 2025"
+  robot: "CAD robot, FTCSIM simulation, prototyping, design iterations"
+  outreach: "MIT Undergraduate Research Technology Conference — 738 participants"
+
+- date: "November 2025"
+  robot: "Scrimmage robot complete, 5-artifact autonomous"
+  outreach: "Hosted NH FTC Scrimmage #2 — 23 teams, 300+ participants"
+
+- date: "December 2025"
+  robot: "Qualifier robot complete, 9-artifact autonomous"
+  outreach: ""
+
+- date: "January 2026"
+  robot: "Designed and built state robot, constructed autonomous"
+  outreach: ""
+
+- date: "February 2026"
+  robot: "Tested and improved teleop & autonomous, state robot complete"
+  outreach: "Hosted NH FTC Qualifier #5 — 22 teams, 300+ participants"
