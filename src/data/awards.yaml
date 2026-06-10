@@ -3,12 +3,27 @@
 # "detail" is optional context (judge category, what it was for).
 # ============================================================
 
-- title: "Award name here"
-  event: "Event / competition name"
-  date: "Month Year"
-  detail: "One line on what this recognized."
+# ============================================================
+# AWARDS  —  one block per award.
+# Double-check the exact award names and events before publishing.
+# ============================================================
 
-- title: "Award name here"
-  event: "Event / competition name"
-  date: "Month Year"
+- title: "Inspire Award"
+  event: "NH FTC Qualifier"
+  date: "2025–26 Season"
+  detail: "FTC's top judged award, recognizing an all-around strong ambassador for FIRST."
+
+- title: "Control Award"
+  event: "NH State Championship"
+  date: "2025–26 Season"
+  detail: "Recognizes innovative use of sensors and software to control the robot."
+
+- title: "Finalist Alliance"
+  event: "Qualifier & State Championship"
+  date: "2025–26 Season"
   detail: ""
+
+- title: "Advanced to the FIRST World Championship"
+  event: "FIRST Championship"
+  date: "2026"
+  detail: "Qualified to represent New Hampshire at the FIRST World Championship."

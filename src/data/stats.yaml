@@ -11,8 +11,17 @@
 - value: "2018"
   label: "Founded"
 
-- value: "24K+"
-  label: "People Reached"
-
 - value: "NH"
   label: "Region"
+
+- value: "21.4K+"
+  label: "People Outreached"
+
+- value: "12"
+  label: "Teams Mentored"
+
+- value: "120+"
+  label: "Volunteer Hours"
+
+- value: "4"
+  label: "Robot Iterations"

@@ -5,10 +5,38 @@
 # and reference it (e.g. logo: "sponsors/acme.png").
 # ============================================================
 
-- name: "Sponsor / partner name"
-  url: "https://example.com"
+- name: "MedPrime Pharmacy"
+  url: ""
   logo: ""
 
-- name: "Sponsor / partner name"
+- name: "Veloxion"
+  url: ""
+  logo: ""
+
+- name: "Andover Periodontics"
+  url: ""
+  logo: ""
+
+- name: "Level Up Chess Academy"
+  url: ""
+  logo: ""
+
+- name: "IEEE"
+  url: ""
+  logo: ""
+
+- name: "Highland Pharmacy"
+  url: ""
+  logo: ""
+
+- name: "MIT Undergraduate Research Technology Conference"
+  url: ""
+  logo: ""
+
+- name: "iTryRobotic Windham After School Academy"
+  url: ""
+  logo: ""
+
+- name: "Residents of Windham, NH and Friends"
   url: ""
   logo: ""

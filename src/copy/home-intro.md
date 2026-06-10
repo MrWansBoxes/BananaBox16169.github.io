@@ -1,6 +1,7 @@
-Welcome to FTC Team 16169, **Banana Box** — a community team of high school
-students based in Windham, NH, passionate about robotics and technology. We
-build competitive robots for the FIRST Tech Challenge, and we work to share
-FIRST with as many people as we can along the way.
+Banana Box is a community **FIRST Tech Challenge** team of eight students from
+Windham, North Andover, and Phillips Academy. We design, build, and program
+competitive robots for the DECODE season — and we work to share FIRST with as
+many people as we can, from mentoring rookie teams to running events that have
+reached over 21,000 people.
 
 <!-- EDIT ABOVE: this short intro shows on the home page. Keep it to 2–4 sentences. -->
