@@ -17,12 +17,22 @@ const desc = description ?? site.tagline;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script is:inline>document.documentElement.classList.add("js");</script>
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        try {
+          var t = localStorage.getItem("theme");
+          if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches)) {
+            d.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
     <link rel="icon" href="/images/favicon.png" />
 
-    <!-- Fonts: Archivo (display), IBM Plex Sans (body), IBM Plex Mono (data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,26 +66,39 @@ const desc = description ?? site.tagline;
         window.addEventListener("scroll", updateBar, { passive: true });
         window.addEventListener("resize", updateBar);
 
-        // Before each page transition, clear the "revealed" marker on the
-        // incoming page so the fade replays every time — including on Back.
-        // After each swap (including Back/Forward), clear the "revealed"
-// marker on the live page so the fade replays every time.
-// Page transitions reset the <html> class list on every navigation,
-// which strips the "js" class that arms the fade. Re-add it (and clear
-// the revealed markers) after each swap, before the slide snapshots.
-document.addEventListener("astro:after-swap", function () {
-  document.documentElement.classList.add("js");
-  document.querySelectorAll(REVEAL_SEL).forEach(function (el) {
-    el.classList.remove("is-visible");
-  });
-});
+        // Toggle dark mode when the nav button is clicked (delegated, so it
+        // keeps working after page transitions swap the button out).
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest && e.target.closest("#theme-toggle");
+          if (!btn) return;
+          var dark = document.documentElement.classList.toggle("dark");
+          try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (err) {}
+        });
+
+        function applyTheme() {
+          try {
+            var t = localStorage.getItem("theme");
+            var dark = t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches);
+            document.documentElement.classList.toggle("dark", dark);
+          } catch (e) {}
+        }
+
+        // Page transitions reset the <html> class list on every navigation,
+        // which strips the "js" and "dark" classes. Re-add them (and clear
+        // the revealed markers) after each swap, before the slide snapshots.
+        document.addEventListener("astro:after-swap", function () {
+          document.documentElement.classList.add("js");
+          applyTheme();
+          document.querySelectorAll(REVEAL_SEL).forEach(function (el) {
+            el.classList.remove("is-visible");
+          });
+        });
 
         function setup() {
           bar = document.getElementById("scroll-progress");
           updateBar();
 
           if (reduce || !("IntersectionObserver" in window)) return;
-          // Stagger items inside these groups so they cascade in
           [".stat__row", ".cards", ".tl", ".grid", ".awards", ".sponsors"].forEach(function (sel) {
             document.querySelectorAll(sel).forEach(function (group) {
               Array.prototype.forEach.call(group.children, function (child, i) {
@@ -94,7 +117,6 @@ document.addEventListener("astro:after-swap", function () {
           document.querySelectorAll(REVEAL_SEL).forEach(function (el) { io.observe(el); });
         }
 
-        // Runs on first load AND after every page transition
         document.addEventListener("astro:page-load", setup);
       })();
     </script>

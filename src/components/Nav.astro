@@ -26,15 +26,19 @@ const isActive = (href) =>
     </label>
 
     <nav class="nav__links" aria-label="Primary">
-      {links.map((l) => (
-        <a
-          href={l.href}
-          class:list={["nav__link", { "nav__link--active": isActive(l.href) }]}
-          aria-current={isActive(l.href) ? "page" : undefined}
-        >
-          {l.label}
-        </a>
-      ))}
+  {links.map((l) => (
+    <a
+      href={l.href}
+      class:list={["nav__link", { "nav__link--active": isActive(l.href) }]}
+      aria-current={isActive(l.href) ? "page" : undefined}
+    >
+      {l.label}
+    </a>
+  ))}
+      <button id="theme-toggle" class="nav__theme" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
       <a class="btn btn--peel nav__cta" href={site.contactUrl} target="_blank" rel="noopener">Contact</a>
     </nav>
   </div>
@@ -77,6 +81,19 @@ const isActive = (href) =>
   .nav__link:hover::after,
   .nav__link--active::after { transform: scaleX(1); }
   .nav__cta { padding: 0.55em 1em; }
+
+  .nav__theme {
+    display: inline-grid; place-items: center;
+    width: 40px; height: 40px; padding: 0;
+    background: none; color: var(--ink);
+    border: 2px solid var(--ink); border-radius: var(--radius);
+    cursor: pointer; transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav__theme:hover { background: var(--peel); color: var(--ink); }
+  .nav__theme svg { width: 18px; height: 18px; }
+  .icon-sun { display: none; }
+  html.dark .icon-sun { display: block; }
+  html.dark .icon-moon { display: none; }
 
   /* Mobile menu */
   .nav__burger { display: none; cursor: pointer; padding: 8px; }

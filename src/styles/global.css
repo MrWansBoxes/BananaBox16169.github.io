@@ -154,3 +154,40 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.01em; }
   z-index: 100;
   pointer-events: none;
 }
+
+/* ============================================================
+   DARK THEME  (add class "dark" to <html> to activate)
+   ============================================================ */
+html.dark {
+  --ink:        #F2EDE1;
+  --ink-soft:   #D8D2C4;
+  --paper:      #1A1813;
+  --paper-2:    #221F17;
+  --bruise:     #AEA086;
+  --peel:       #FFCA1A;
+  --peel-deep:  #F0B400;
+  --leaf:       #8FBF98;
+  --line:       #423E34;
+}
+
+/* Text sitting ON the yellow accent must stay dark in both themes */
+html.dark .btn--peel { --fg: #1B1A17; }
+html.dark .nav__num,
+html.dark .tl__tag--robot,
+html.dark .card:hover { --ink: #1B1A17; --bruise: #4A4332; }
+html.dark .prose th,
+html.dark .intro__body strong,
+html.dark .sponsor a:hover { color: #1B1A17; }
+
+/* Keep the stat strip and footer dark (not flipped to light) */
+html.dark .section--ink,
+html.dark .foot { background: #100F0B; }
+html.dark .section--ink,
+html.dark .stat__value,
+html.dark .foot,
+html.dark .foot__name,
+html.dark .foot__email,
+html.dark .foot__link { color: var(--ink); }
+
+/* Smooth the switch on the big surfaces */
+body, .nav, .section--ink, .foot { transition: background-color 0.3s ease, color 0.3s ease; }
