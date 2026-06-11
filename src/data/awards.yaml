@@ -7,23 +7,27 @@
 # AWARDS  —  one block per award.
 # Double-check the exact award names and events before publishing.
 # ============================================================
+- title: "Inspire Award 2nd Place"
+  event: "Bedford Qualifier #1"
+  date: "December 20, 2025"
+  detail: "FTC's top judged award, recognizing an all-around strong ambassador for FIRST."
 
 - title: "Inspire Award"
-  event: "NH FTC Qualifier"
-  date: "2025–26 Season"
+  event: "Merrimack Qualifier #4"
+  date: "January 24,2026"
   detail: "FTC's top judged award, recognizing an all-around strong ambassador for FIRST."
 
 - title: "Control Award"
   event: "NH State Championship"
-  date: "2025–26 Season"
+  date: "February 21, 2026"
   detail: "Recognizes innovative use of sensors and software to control the robot."
-
-- title: "Finalist Alliance"
-  event: "Qualifier & State Championship"
-  date: "2025–26 Season"
-  detail: ""
 
 - title: "Advanced to the FIRST World Championship"
   event: "FIRST Championship"
-  date: "2026"
+  date: "February 21, 2026"
   detail: "Qualified to represent New Hampshire at the FIRST World Championship."
+
+- title: "Connect Award 3rd Place"
+  event: "FIRST Championship"
+  date: "May 2, 2026"
+  detail: "Given to the team that most effectively connects with their local STEM and engineering community"

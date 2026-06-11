@@ -24,4 +24,4 @@ troubleshooting), cognitive skills (problem solving, planning), and collaboratio
 through teamwork and Gracious Professionalism. To grow our own mentor base, we reach
 out to FLL, FTC, and FRC alumni as well as parents and their peers.
 
-To get involved as a sponsor, mentor, or partner, [get in touch](mailto:ftcbananabox16169@gmail.com).
+To get involved as a sponsor, mentor, or partner, [get in touch](https://mail.google.com/mail/u/0/?fs=1&to=ftcbananabox16169@gmail.com&tf=cm).
