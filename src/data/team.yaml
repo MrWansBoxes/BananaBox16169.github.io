@@ -36,3 +36,27 @@
 - name: "Pranav Mantena"
   role: "Outreach, Human Player"
   photo: "team/Pradove.png"
+
+- name: "Isaac Lin"
+  role: "Programming, CAD"
+  photo: ""
+
+- name: "Akash"
+  role: "CAD, Mechanical"
+  photo: ""
+
+- name: "Sathvik"
+  role: "CAD"
+  photo: ""
+
+- name: "Dhruv Singh"
+  role: "CAD, Portfolio"
+  photo: ""
+
+- name: "Pranav Pakalapati"
+  role: "Programming, Portfolio"
+  photo: ""
+
+- name: "Tarun"
+  role: "Programming"
+  photo: ""

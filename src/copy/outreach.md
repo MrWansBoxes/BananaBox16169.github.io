@@ -1,8 +1,9 @@
-## Our impact
+## Our Impact
 
 This season we ran **15 community outreach events**, two international outreach
 efforts, and a community service project — over **120 volunteer hours** reaching
 more than **21,000 people**.
+
 
 **Londonderry YMCA.** With our sister team Blue Box, we introduced FLL and FTC to
 children, parents, and professionals at the YMCA board meeting, and we've helped
