@@ -60,4 +60,5 @@ Thanks to mentor Danny Diaz and our experience with the current Control Hub, we 
 selected from thousands of teams worldwide to **alpha/beta test FIRST's next-
 generation control system** — the SystemCore and MotionCore, along with the A301
 actuator. As we build expertise with the new system, we're sharing what we learn
-across the FIRST community.
+across the FIRST community. More about this system can be found at the [Systemcore Testing GitHub Repo](https://github.com/wpilibsuite/SystemcoreTesting)
+
