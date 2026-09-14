@@ -1,0 +1,55 @@
+---
+import Base from "../../layouts/Base.astro";
+import seasons from "../../data/seasons.yaml";
+
+export function getStaticPaths() {
+  return seasons.map((season) => ({
+    params: { slug: season.slug },
+    props: { season },
+  }));
+}
+
+const { season } = Astro.props;
+const status = season.current ? "Current season" : "Season archive";
+const message = season.current
+  ? "This season is currently in progress. This page is ready for updates as the season develops."
+  : "This archive is ready for season-specific content to be added.";
+---
+
+<Base
+  title={`${season.name} ${season.year}`}
+  description={`${season.name}, the ${season.year} season for FTC Team 16169 Banana Box.`}
+>
+  <section class="wrap pagehead">
+    <p class="eyebrow">{status}</p>
+    <h1>{season.name}</h1>
+    <p>{season.year}</p>
+  </section>
+
+  <section class="wrap section" style="padding-top:0">
+    <article class="season-shell">
+      <h2>{season.current ? "Season in progress" : "Archive ready"}</h2>
+      <p>{message}</p>
+      <a class="btn btn--ghost" href="/seasons">
+        <span aria-hidden="true">←</span> All seasons
+      </a>
+    </article>
+  </section>
+</Base>
+
+<style>
+  .season-shell {
+    max-width: 760px;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 10px 10px 0 var(--peel);
+  }
+  .season-shell h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  .season-shell p {
+    max-width: 55ch;
+    margin: 1rem 0 2rem;
+    color: var(--bruise);
+  }
+</style>
