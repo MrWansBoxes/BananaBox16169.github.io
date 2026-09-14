@@ -1,0 +1,9 @@
+- year: "2026–2027"
+  name: "BIOBUZZ"
+  slug: "biobuzz"
+  current: true
+
+- year: "2025–2026"
+  name: "DECODE"
+  slug: "decode"
+  current: false

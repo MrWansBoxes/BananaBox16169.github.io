@@ -7,6 +7,7 @@ const links = [
   { href: "/robot", label: "Robot" },
   { href: "/outreach", label: "Outreach" },
   { href: "/awards", label: "Awards" },
+  { href: "/seasons", label: "Seasons" },
   { href: "/support", label: "Support" },
 ];
 const isActive = (href) =>
@@ -101,7 +102,7 @@ const isActive = (href) =>
     display: block; width: 26px; height: 2.5px; background: var(--ink);
     margin: 5px 0; transition: transform 0.2s ease, opacity 0.2s ease;
   }
-  @media (max-width: 820px) {
+  @media (max-width: 1040px) {
     .nav__burger { display: block; }
     .nav__links {
       position: absolute; top: 100%; left: 0; right: 0;
@@ -111,7 +112,7 @@ const isActive = (href) =>
       max-height: 0; overflow: hidden; padding-block: 0;
       transition: max-height 0.25s ease, padding-block 0.25s ease;
     }
-    .nav__check:checked ~ .nav__links { max-height: 420px; padding-block: 1rem 1.4rem; }
+    .nav__check:checked ~ .nav__links { max-height: 480px; padding-block: 1rem 1.4rem; }
     .nav__link { font-size: 1rem; padding: 0.5em 0; }
     .nav__cta { margin-top: 0.5rem; }
   }

@@ -1,0 +1,100 @@
+---
+import Base from "../../layouts/Base.astro";
+import seasons from "../../data/seasons.yaml";
+---
+
+<Base title="Seasons" description="Current and archived seasons for FTC Team 16169 Banana Box.">
+  <section class="wrap pagehead">
+    <p class="eyebrow">Team history</p>
+    <h1>Seasons</h1>
+    <p>Explore the current Banana Box season and our growing team archive.</p>
+  </section>
+
+  <section class="wrap section" style="padding-top:0">
+    <div class="seasons">
+      {seasons.map((season) => (
+        <article class="season-card">
+          <div class="season-card__meta">
+            <span class="season-card__year">{season.year}</span>
+            {season.current && <span class="season-card__badge">Current season</span>}
+          </div>
+          <h2>{season.name}</h2>
+          <a class="btn btn--ghost" href={`/seasons/${season.slug}`}>
+            View season <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .seasons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+  .season-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 1.6rem 1.5rem;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+  }
+  .season-card:hover {
+    color: #1B1A17;
+    background: var(--peel);
+    box-shadow: 8px 8px 0 var(--ink);
+    transform: translateY(-4px);
+  }
+  .season-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .season-card__year {
+    color: var(--bruise);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .season-card__badge {
+    padding: 0.35em 0.65em;
+    color: #1B1A17;
+    background: var(--peel);
+    border: 1.5px solid #1B1A17;
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .season-card:hover .season-card__year { color: #4A4332; }
+  .season-card:hover .season-card__badge { background: #F6F2E9; }
+  .season-card h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    overflow-wrap: anywhere;
+  }
+  .season-card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+  .season-card:hover .btn {
+    --bg: #1B1A17;
+    --fg: #F6F2E9;
+    border-color: #1B1A17;
+  }
+  @media (max-width: 860px) {
+    .seasons { grid-template-columns: 1fr; }
+    .season-card { min-height: 240px; }
+  }
+</style>
