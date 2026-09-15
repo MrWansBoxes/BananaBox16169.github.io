@@ -6,7 +6,7 @@ export const getCurrentOutreach = (entries) =>
   [...entries]
     .filter((entry) =>
       dateKey(entry) >= CURRENT_OUTREACH_CUTOFF || entry.seasons.includes("biobuzz"))
-    .sort((a, b) => dateKey(b).localeCompare(dateKey(a)));
+    .sort((a, b) => dateKey(a).localeCompare(dateKey(b)));
 
 export const getSeasonOutreach = (entries, season) =>
   [...entries]
@@ -20,10 +20,10 @@ export const getSeasonOutreach = (entries, season) =>
     });
 
 export const toOutreachTimeline = (entries) =>
-  entries.map((entry) => {
-    return {
+  entries.flatMap((entry) =>
+    entry.timelineEntries || [{
       date: entry.dateLabel,
       sortDate: dateKey(entry),
       outreach: entry.timelineSummary || `${entry.title}. ${entry.description}`,
-    };
-  });
+    }]
+  );
