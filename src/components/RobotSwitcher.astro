@@ -1,5 +1,6 @@
 ---
 import robots from "../data/robots.yaml";
+import robotIn24Hours from "../data/robot-in-24-hours.yaml";
 ---
 
 <fieldset class="robot-switcher">
@@ -18,18 +19,58 @@ import robots from "../data/robots.yaml";
   ))}
 
   <div class="robot-panels">
-    {robots.map((robot) => (
-      <section
-        class="robot-panel"
-        id={`robot-panel-${robot.id}`}
-        data-robot={robot.id}
-        aria-labelledby={`robot-label-${robot.id}`}
-      >
-        <p class="robot-panel__status">{robot.status}</p>
-        <h2>{robot.label}</h2>
-        <p>{robot.description}</p>
-      </section>
-    ))}
+    {robots.map((robot) => {
+      const eventTeam = robotIn24Hours.teams.find((team) => team.robotId === robot.id);
+
+      return (
+        <section
+          class="robot-panel"
+          id={`robot-panel-${robot.id}`}
+          data-robot={robot.id}
+          aria-labelledby={`robot-label-${robot.id}`}
+        >
+          <p class="robot-panel__status">{robot.status}</p>
+          <h2>{robot.label}</h2>
+          <p class="robot-panel__description">{robot.description}</p>
+
+          <section class="robot-event">
+            <p class="robot-event__eyebrow">24-hour build</p>
+            <h3>{robotIn24Hours.title}</h3>
+            <ul>
+              {robotIn24Hours.robotFacts.map((fact) => <li>{fact}</li>)}
+            </ul>
+            <p>
+              <a class="robot-event__repo" href={eventTeam.repository.url}>
+                {eventTeam.repository.label}
+              </a>
+            </p>
+            {eventTeam.images && (
+              <div
+                class:list={[
+                  "robot-event__gallery",
+                  { "robot-event__gallery--single": eventTeam.images.length === 1 },
+                ]}
+              >
+                {eventTeam.images.map((image) => (
+                  <figure class="robot-event__figure">
+                    <div class="robot-event__frame">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        width={image.width}
+                        height={image.height}
+                        loading="lazy"
+                      />
+                    </div>
+                    <figcaption>{image.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
+          </section>
+        </section>
+      );
+    })}
   </div>
 </fieldset>
 
@@ -117,12 +158,70 @@ import robots from "../data/robots.yaml";
     color: var(--bruise);
   }
   .robot-panel h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
-  .robot-panel > p:last-child { max-width: 58ch; margin: 1rem 0 0; }
+  .robot-panel__description { max-width: 58ch; margin: 1rem 0 0; }
+  .robot-event {
+    margin-top: clamp(2rem, 5vw, 3.2rem);
+    padding-top: clamp(1.5rem, 4vw, 2.2rem);
+    border-top: 2px solid var(--ink);
+  }
+  .robot-event__eyebrow {
+    margin: 0 0 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bruise);
+  }
+  .robot-event h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .robot-event ul { margin: 1.2rem 0; padding-left: 1.25rem; }
+  .robot-event li { margin-bottom: 0.35rem; }
+  .robot-event__repo {
+    color: var(--peel-deep);
+    font-weight: 600;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  .robot-event__repo:hover { color: var(--ink); background: var(--peel); }
+  .robot-event__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    max-width: 680px;
+    margin-top: 2rem;
+  }
+  .robot-event__gallery--single {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+  .robot-event__figure { margin: 0; }
+  .robot-event__frame {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 8px 8px 0 var(--peel);
+  }
+  .robot-event__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .robot-event__figure figcaption {
+    margin-top: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--bruise);
+  }
   #robot-a-team:checked ~ .robot-panels [data-robot="a-team"],
   #robot-b-team:checked ~ .robot-panels [data-robot="b-team"] {
     display: block;
   }
   @media (max-width: 520px) {
     .robot-switcher label { padding-inline: 0.6rem; font-size: 0.76rem; }
+    .robot-event__gallery { grid-template-columns: 1fr; }
   }
 </style>

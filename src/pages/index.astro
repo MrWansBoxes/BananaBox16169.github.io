@@ -7,12 +7,18 @@ import site from "../data/site.yaml";
 import stats from "../data/stats.yaml";
 import milestones from "../data/milestones.yaml";
 import outreach from "../data/outreach.yaml";
+import robotIn24Hours from "../data/robot-in-24-hours.yaml";
 import { getCurrentOutreach, toOutreachTimeline } from "../utils/outreach.js";
 import { sortTimelineItems } from "../utils/timeline.js";
 import { Content as Intro } from "../copy/home-intro.md";
 
 const currentTimeline = sortTimelineItems([
   ...milestones,
+  {
+    date: robotIn24Hours.date,
+    sortDate: robotIn24Hours.sortDate,
+    ...robotIn24Hours.timeline,
+  },
   ...toOutreachTimeline(getCurrentOutreach(outreach.entries)),
 ]);
 ---
