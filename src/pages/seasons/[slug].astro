@@ -9,6 +9,7 @@ import Timeline from "../../components/Timeline.astro";
 import decodeAwards from "../../data/seasons/decode/awards.yaml";
 import decodeMilestones from "../../data/seasons/decode/milestones.yaml";
 import outreach from "../../data/outreach.yaml";
+import robotIn24Hours from "../../data/robot-in-24-hours.yaml";
 import seasons from "../../data/seasons.yaml";
 import team from "../../data/team.yaml";
 import { getSeasonOutreach } from "../../utils/outreach.js";
@@ -99,18 +100,35 @@ const decodeTeam = team.filter((member) => member.photo);
       </section>
     </>
   ) : (
-    <section class="wrap section" style="padding-top:0">
-      <article class="season-shell">
-        <h2>Season in progress</h2>
-        <p>This season is currently in progress. This page is ready for updates as BIOBUZZ develops.</p>
-        <div class="season-shell__actions">
-          <a class="btn btn--peel" href="/robot">View current robot</a>
-          <a class="btn btn--ghost" href="/seasons">
-            <span aria-hidden="true">←</span> All seasons
-          </a>
+    <>
+      <section class="wrap section" style="padding-top:0">
+        <article class="season-shell">
+          <h2>Season in progress</h2>
+          <p>This season is currently in progress. This page is ready for updates as BIOBUZZ develops.</p>
+          <div class="season-shell__actions">
+            <a class="btn btn--peel" href="/robot">View current robot</a>
+            <a class="btn btn--ghost" href="/seasons">
+              <span aria-hidden="true">←</span> All seasons
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="section section--paper2">
+        <div class="wrap current-event">
+          <p class="eyebrow">Season milestone</p>
+          <h2>{robotIn24Hours.title}</h2>
+          <p class="current-event__schedule">
+            <time datetime={robotIn24Hours.schedule.start.datetime}>{robotIn24Hours.schedule.start.label}</time>
+            <span> through </span>
+            <time datetime={robotIn24Hours.schedule.end.datetime}>{robotIn24Hours.schedule.end.label}</time>
+          </p>
+          <p>{robotIn24Hours.summary}</p>
+          <p>{robotIn24Hours.context}</p>
+          <a class="btn btn--peel" href="/robot">View A/B robot details</a>
         </div>
-      </article>
-    </section>
+      </section>
+    </>
   )}
 </Base>
 
@@ -130,6 +148,15 @@ const decodeTeam = team.filter((member) => member.photo);
     color: var(--bruise);
   }
   .season-shell__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .current-event h2 { max-width: 22ch; }
+  .current-event > p { max-width: 64ch; color: var(--bruise); }
+  .current-event__schedule {
+    margin: 1.2rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .current-event .btn { margin-top: 1rem; }
   .archive-section { scroll-margin-top: 90px; }
   .archive-section > h2,
   .archive-section > .wrap > h2 { max-width: 22ch; }
