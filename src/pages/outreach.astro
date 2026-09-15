@@ -1,7 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
+import OutreachList from "../components/OutreachList.astro";
 import Timeline from "../components/Timeline.astro";
+import outreach from "../data/outreach.yaml";
+import { getCurrentOutreach, toOutreachTimeline } from "../utils/outreach.js";
+import { sortTimelineItems } from "../utils/timeline.js";
 import { Content } from "../copy/outreach.md";
+
+const currentOutreach = getCurrentOutreach(outreach.entries);
+const currentTimeline = sortTimelineItems(toOutreachTimeline(currentOutreach));
 ---
 <Base title="Outreach" description="How Banana Box brings FIRST to thousands of people.">
   <section class="wrap pagehead">
@@ -12,11 +19,16 @@ import { Content } from "../copy/outreach.md";
   <section class="wrap section" style="padding-top:0">
     <article class="prose"><Content /></article>
   </section>
+  <section class="wrap section" style="padding-top:0">
+    <p class="eyebrow">Season timeline</p>
+    <h2 style="margin:0.4rem 0 2.4rem;max-width:22ch">Robot and outreach, month by month</h2>
+    <Timeline items={currentTimeline} />
+  </section>
   <section class="section section--paper2">
     <div class="wrap">
-      <p class="eyebrow">Season timeline</p>
-      <h2 style="margin:0.4rem 0 2.4rem;max-width:22ch">Robot and outreach, month by month.</h2>
-      <Timeline />
+      <p class="eyebrow">Outreach in detail</p>
+      <h2 style="margin:0.4rem 0 2.4rem;max-width:22ch">Our Impact</h2>
+      <OutreachList items={currentOutreach} />
     </div>
   </section>
 </Base>

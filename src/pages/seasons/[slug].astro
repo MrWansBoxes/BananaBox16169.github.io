@@ -1,6 +1,19 @@
 ---
 import Base from "../../layouts/Base.astro";
+import AwardList from "../../components/AwardList.astro";
+import BetaTesting from "../../components/BetaTesting.astro";
+import OutreachList from "../../components/OutreachList.astro";
+import StatStrip from "../../components/StatStrip.astro";
+import TeamGrid from "../../components/TeamGrid.astro";
+import Timeline from "../../components/Timeline.astro";
+import decodeAwards from "../../data/seasons/decode/awards.yaml";
+import decodeMilestones from "../../data/seasons/decode/milestones.yaml";
+import outreach from "../../data/outreach.yaml";
 import seasons from "../../data/seasons.yaml";
+import team from "../../data/team.yaml";
+import { getSeasonOutreach } from "../../utils/outreach.js";
+import { Content as DecodeRobot } from "../../copy/seasons/decode/robot.md";
+import { Content as DecodeWhoWeAre } from "../../copy/seasons/decode/who-we-are.md";
 
 export function getStaticPaths() {
   return seasons.map((season) => ({
@@ -11,9 +24,13 @@ export function getStaticPaths() {
 
 const { season } = Astro.props;
 const status = season.current ? "Current season" : "Season archive";
-const message = season.current
-  ? "This season is currently in progress. This page is ready for updates as the season develops."
-  : "This archive is ready for season-specific content to be added.";
+const isDecode = season.slug === "decode";
+const decodeOutreach = getSeasonOutreach(outreach.entries, "decode");
+const decodeHighlights = [
+  ...outreach.summaries.decode.metrics,
+  { value: "4", label: "Robot Iterations" },
+];
+const decodeTeam = team.filter((member) => member.photo);
 ---
 
 <Base
@@ -26,15 +43,75 @@ const message = season.current
     <p>{season.year}</p>
   </section>
 
-  <section class="wrap section" style="padding-top:0">
-    <article class="season-shell">
-      <h2>{season.current ? "Season in progress" : "Archive ready"}</h2>
-      <p>{message}</p>
-      <a class="btn btn--ghost" href="/seasons">
-        <span aria-hidden="true">←</span> All seasons
-      </a>
-    </article>
-  </section>
+  {isDecode ? (
+    <>
+      <StatStrip items={decodeHighlights} />
+
+      <section id="team" class="wrap section archive-section">
+        <p class="eyebrow">Who we were</p>
+        <h2>The DECODE team.</h2>
+        <article class="prose archive-who"><DecodeWhoWeAre /></article>
+        <p class="eyebrow roster-label">Season roster</p>
+        <TeamGrid members={decodeTeam} />
+      </section>
+
+      <section id="robot" class="section section--paper2 archive-section">
+        <div class="wrap">
+        <p class="eyebrow">Robot &amp; engineering</p>
+        <h2>Bumblebee</h2>
+        <div class="robot-archive">
+          <div class="robot-archive__media">
+            <img src="/images/seasons/decode/bumblebee.png" alt="Bumblebee, Banana Box's DECODE robot" />
+          </div>
+          <div class="robot-archive__content">
+            <article class="prose"><DecodeRobot /></article>
+            <BetaTesting season="decode" />
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <section id="timeline" class="wrap section archive-section">
+          <p class="eyebrow">Robot timeline</p>
+          <h2>DECODE, month by month.</h2>
+          <div class="archive-content"><Timeline items={decodeMilestones} /></div>
+      </section>
+
+      <section id="outreach" class="section section--paper2 archive-section">
+        <div class="wrap">
+        <p class="eyebrow">Outreach &amp; impact</p>
+        <h2>DECODE Outreach</h2>
+        <p class="archive-lede">{outreach.summaries.decode.description}</p>
+        <div class="archive-content"><OutreachList items={decodeOutreach} /></div>
+        </div>
+      </section>
+
+      <section id="awards" class="wrap section archive-section">
+          <p class="eyebrow">Recognition</p>
+          <h2>DECODE awards.</h2>
+          <div class="archive-content"><AwardList items={decodeAwards} /></div>
+      </section>
+
+      <section class="wrap archive-back">
+        <a class="btn btn--ghost" href="/seasons">
+          <span aria-hidden="true">←</span> All seasons
+        </a>
+      </section>
+    </>
+  ) : (
+    <section class="wrap section" style="padding-top:0">
+      <article class="season-shell">
+        <h2>Season in progress</h2>
+        <p>This season is currently in progress. This page is ready for updates as BIOBUZZ develops.</p>
+        <div class="season-shell__actions">
+          <a class="btn btn--peel" href="/robot">View current robot</a>
+          <a class="btn btn--ghost" href="/seasons">
+            <span aria-hidden="true">←</span> All seasons
+          </a>
+        </div>
+      </article>
+    </section>
+  )}
 </Base>
 
 <style>
@@ -51,5 +128,40 @@ const message = season.current
     max-width: 55ch;
     margin: 1rem 0 2rem;
     color: var(--bruise);
+  }
+  .season-shell__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .archive-section { scroll-margin-top: 90px; }
+  .archive-section > h2,
+  .archive-section > .wrap > h2 { max-width: 22ch; }
+  .archive-who {
+    margin-top: 1.2rem; font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.5;
+  }
+  .archive-who :global(strong) {
+    color: #1B1A17; background: var(--peel); padding: 0 0.15em;
+  }
+  .roster-label { margin-top: clamp(3rem, 6vw, 5rem); }
+  .archive-lede { max-width: 64ch; margin: 1rem 0 0; color: var(--bruise); }
+  .archive-content { margin-top: 2.4rem; }
+  .robot-archive {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    margin-top: 2.4rem;
+  }
+  .robot-archive__media {
+    position: sticky;
+    top: 100px;
+    overflow: hidden;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 10px 10px 0 var(--peel);
+  }
+  .robot-archive__media img { width: 100%; }
+  .archive-back { padding-block: 0 clamp(56px, 9vw, 120px); }
+  @media (max-width: 800px) {
+    .robot-archive { grid-template-columns: 1fr; }
+    .robot-archive__media { position: static; }
   }
 </style>
