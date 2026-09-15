@@ -1,0 +1,56 @@
+---
+import team from "../data/team.yaml";
+import groups from "../data/team-groups.yaml";
+---
+
+<div class="team-groups">
+  {groups.map((group, groupIndex) => {
+    const members = team
+      .filter((member) => member.currentGroup === group.id)
+      .sort((first, second) => first.groupOrder - second.groupOrder);
+
+    return (
+      <article class="team-group member" style={`--reveal-delay: ${groupIndex * 80}ms`}>
+        <h3>{group.name}</h3>
+        <p>{group.description}</p>
+        <ul>
+          {members.map((member) => <li>{member.name}</li>)}
+        </ul>
+      </article>
+    );
+  })}
+</div>
+
+<style>
+  .team-groups {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.4rem;
+  }
+  .team-group {
+    padding: clamp(1.4rem, 3vw, 2rem);
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 8px 8px 0 var(--peel);
+  }
+  .team-group h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .team-group p { margin: 0.9rem 0 1.4rem; color: var(--bruise); }
+  .team-group ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 2px solid var(--ink);
+  }
+  .team-group li {
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  @media (max-width: 820px) {
+    .team-groups { grid-template-columns: 1fr; }
+  }
+</style>

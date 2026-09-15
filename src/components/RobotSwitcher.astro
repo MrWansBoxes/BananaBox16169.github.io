@@ -1,0 +1,128 @@
+---
+import robots from "../data/robots.yaml";
+---
+
+<fieldset class="robot-switcher">
+  <legend>Choose a robot</legend>
+  {robots.map((robot, index) => (
+    <Fragment>
+      <input
+        type="radio"
+        name="current-robot"
+        id={`robot-${robot.id}`}
+        aria-controls={`robot-panel-${robot.id}`}
+        checked={index === 0}
+      />
+      <label id={`robot-label-${robot.id}`} for={`robot-${robot.id}`}>{robot.label}</label>
+    </Fragment>
+  ))}
+
+  <div class="robot-panels">
+    {robots.map((robot) => (
+      <section
+        class="robot-panel"
+        id={`robot-panel-${robot.id}`}
+        data-robot={robot.id}
+        aria-labelledby={`robot-label-${robot.id}`}
+      >
+        <p class="robot-panel__status">{robot.status}</p>
+        <h2>{robot.label}</h2>
+        <p>{robot.description}</p>
+      </section>
+    ))}
+  </div>
+</fieldset>
+
+<style>
+  .robot-switcher {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 860px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .robot-switcher legend {
+    grid-column: 1 / -1;
+    margin-bottom: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bruise);
+  }
+  .robot-switcher input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .robot-switcher label {
+    display: grid;
+    place-items: center;
+    min-height: 54px;
+    padding: 0.75rem 1rem;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .robot-switcher label:first-of-type {
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+  .robot-switcher label:last-of-type {
+    margin-left: -2px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .robot-switcher input:checked + label {
+    position: relative;
+    z-index: 1;
+    background: var(--peel);
+    color: #1B1A17;
+  }
+  .robot-switcher input:focus-visible + label {
+    position: relative;
+    z-index: 2;
+    outline: 3px solid var(--leaf);
+    outline-offset: 3px;
+  }
+  .robot-panels {
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+  }
+  .robot-panel {
+    display: none;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: var(--paper-2);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 10px 10px 0 var(--peel);
+  }
+  .robot-panel__status {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bruise);
+  }
+  .robot-panel h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  .robot-panel > p:last-child { max-width: 58ch; margin: 1rem 0 0; }
+  #robot-a-team:checked ~ .robot-panels [data-robot="a-team"],
+  #robot-b-team:checked ~ .robot-panels [data-robot="b-team"] {
+    display: block;
+  }
+  @media (max-width: 520px) {
+    .robot-switcher label { padding-inline: 0.6rem; font-size: 0.76rem; }
+  }
+</style>

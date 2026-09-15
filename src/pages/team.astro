@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import TeamGrid from "../components/TeamGrid.astro";
+import TeamStructure from "../components/TeamStructure.astro";
 ---
 <Base title="Team" description="Meet the students of FTC Team 16169 Banana Box.">
   <section class="wrap pagehead">
@@ -11,4 +12,18 @@ import TeamGrid from "../components/TeamGrid.astro";
   <section class="wrap section" style="padding-top:0">
     <TeamGrid />
   </section>
+  <section class="section section--paper2">
+    <div class="wrap">
+      <p class="eyebrow">Current season</p>
+      <h2>How Our Team Functions</h2>
+      <p class="team-functions__intro">
+        During BIOBUZZ, Banana Box works through two robot subteams and a flexible group of Neutrals.
+      </p>
+      <TeamStructure />
+    </div>
+  </section>
 </Base>
+
+<style>
+  .team-functions__intro { max-width: 62ch; margin: 1rem 0 0; color: var(--bruise); }
+</style>
