@@ -1,0 +1,9 @@
+- id: "a-team"
+  label: "A Team Robot"
+  status: "In development"
+  description: "A Team's 2026–2027 BIOBUZZ robot is currently in development. Confirmed design, build, and programming details will be added as development continues."
+
+- id: "b-team"
+  label: "B Team Robot"
+  status: "In development"
+  description: "B Team's 2026–2027 BIOBUZZ robot is currently in development. Confirmed design, build, and programming details will be added as development continues."

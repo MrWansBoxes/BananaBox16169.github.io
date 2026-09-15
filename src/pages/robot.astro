@@ -1,16 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
 import BetaTesting from "../components/BetaTesting.astro";
-import { Content } from "../copy/robot.md";
+import RobotSwitcher from "../components/RobotSwitcher.astro";
 ---
-<Base title="BIOBUZZ Robot" description="The 2026–2027 BIOBUZZ robot for FTC Team 16169 Banana Box.">
+<Base title="BIOBUZZ Robots" description="The 2026–2027 BIOBUZZ robots for FTC Team 16169 Banana Box.">
   <section class="wrap pagehead">
     <p class="eyebrow">Engineering</p>
-    <h1>BIOBUZZ robot</h1>
-    <p>Our current FIRST Tech Challenge robot, from early ideas through competition.</p>
+    <h1>BIOBUZZ robots</h1>
+    <p>Our current FIRST Tech Challenge robots, from early ideas through competition.</p>
   </section>
   <section class="wrap section" style="padding-top:0">
-    <article class="prose"><Content /></article>
+    <RobotSwitcher />
     <BetaTesting season="biobuzz" />
   </section>
 </Base>

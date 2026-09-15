@@ -8,55 +8,83 @@
 - name: "Rayhan Riaz"
   role: "Team Captain, Main Driver"
   photo: "team/Rayhan.png"
+  currentGroup: "neutral"
+  groupOrder: 1
 
 - name: "Stefan Barbu"
   role: "Lead Scout, Mechanic"
   photo: "team/Stefan.png"
+  currentGroup: "neutral"
+  groupOrder: 3
 
 - name: "Ethan Deandrea"
   role: "Lead Programmer, Second Driver"
   photo: "team/Ethan.jpg"
+  currentGroup: "a-team"
+  groupOrder: 1
 
 - name: "Kiaan Mehta"
   role: "Programmer, Drive Coach"
   photo: "team/Kiaan.png"
+  currentGroup: "a-team"
+  groupOrder: 4
 
 - name: "Govind Valiyodiyil"
   role: "Vice-Captain, Lead Designer"
   photo: "team/Govind.png"
+  currentGroup: "a-team"
+  groupOrder: 2
 
 - name: "Matthew Dona"
   role: ""
   photo: "team/Matthew.png"
+  currentGroup: "neutral"
+  groupOrder: 4
 
 - name: "Aditya Biju"
   role: "Lead Mechanic, Co-Human Player"
   photo: "team/Adi.png"
+  currentGroup: "a-team"
+  groupOrder: 3
 
 - name: "Pranav Mantena"
   role: "Outreach, Human Player"
   photo: "team/Pradove.png"
+  currentGroup: "neutral"
+  groupOrder: 2
 
 - name: "Isaac Lin"
   role: "Programming, CAD"
   photo: ""
+  currentGroup: "b-team"
+  groupOrder: 3
 
 - name: "Akash"
   role: "CAD, Mechanical"
   photo: ""
+  currentGroup: "b-team"
+  groupOrder: 2
 
 - name: "Sathvik"
   role: "CAD"
   photo: ""
+  currentGroup: "b-team"
+  groupOrder: 5
 
 - name: "Dhruv Singh"
   role: "CAD, Portfolio"
   photo: ""
+  currentGroup: "b-team"
+  groupOrder: 6
 
 - name: "Pranav Pakalapati"
   role: "Programming, Portfolio"
   photo: ""
+  currentGroup: "b-team"
+  groupOrder: 1
 
 - name: "Tarun"
   role: "Programming"
   photo: ""
+  currentGroup: "b-team"
+  groupOrder: 4
