@@ -1,0 +1,30 @@
+---
+import betaTesting from "../data/beta-testing.yaml";
+
+const { season } = Astro.props;
+const details = betaTesting.seasons[season];
+---
+
+<section class="beta-testing">
+  <h2>Beta testing</h2>
+  <p>{details.description}</p>
+  <p>
+    Follow the work in the
+    <a class="beta-testing__repo" href={betaTesting.repository.url} target="_blank" rel="noopener">
+      {betaTesting.repository.label}
+    </a>.
+  </p>
+</section>
+
+<style>
+  .beta-testing { max-width: 68ch; margin-top: 3rem; }
+  .beta-testing h2 { margin: 0 0 0.7rem; }
+  .beta-testing p { margin: 0 0 1.1em; }
+  .beta-testing__repo {
+    color: var(--peel-deep);
+    font-weight: 600;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  .beta-testing__repo:hover { color: var(--ink); background: var(--peel); }
+</style>

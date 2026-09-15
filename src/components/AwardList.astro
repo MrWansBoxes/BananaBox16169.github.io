@@ -1,0 +1,46 @@
+---
+const { items } = Astro.props;
+---
+
+<ul class="awards">
+  {items.map((award) => (
+    <li class="award">
+      <div class="award__date">{award.date}</div>
+      <div class="award__body">
+        <h3 class="award__title">{award.title}</h3>
+        <p class="award__event">{award.event}</p>
+        {award.detail && <p class="award__detail">{award.detail}</p>}
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .awards { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+  .award {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    padding: 1.4rem 1.5rem;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+  }
+  .award__date {
+    padding-top: 0.2rem;
+    color: var(--bruise);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+  .award__title { margin: 0; }
+  .award__event {
+    margin: 0.3rem 0 0;
+    color: var(--bruise);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .award__detail { margin: 0.6rem 0 0; }
+  @media (max-width: 640px) {
+    .award { grid-template-columns: 1fr; gap: 0.4rem; }
+  }
+</style>

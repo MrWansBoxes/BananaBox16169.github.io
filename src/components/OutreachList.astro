@@ -1,0 +1,93 @@
+---
+const { items } = Astro.props;
+---
+
+<ol class="outreach-list">
+  {items.map((item) => (
+    <li class="outreach-entry">
+      <div class="outreach-entry__meta">
+        <span>{item.dateLabel}</span>
+        {item.location && <span>{item.location}</span>}
+      </div>
+      <div class="outreach-entry__body">
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+        {item.metrics?.length > 0 && (
+          <ul class="outreach-entry__metrics" aria-label={`${item.title} impact`}>
+            {item.metrics.map((metric) => (
+              <li><strong>{metric.value}</strong> {metric.label}</li>
+            ))}
+          </ul>
+        )}
+        {item.photos?.length > 0 && (
+          <div class="outreach-entry__photos">
+            {item.photos.map((photo) => (
+              <img src={photo.src} alt={photo.alt} loading="lazy" />
+            ))}
+          </div>
+        )}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .outreach-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .outreach-entry {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 1.5rem;
+    padding: 1.4rem 1.5rem;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+  }
+  .outreach-entry__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-top: 0.2rem;
+    color: var(--bruise);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  .outreach-entry h3 { margin: 0; }
+  .outreach-entry p { margin: 0.6rem 0 0; }
+  .outreach-entry__metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .outreach-entry__metrics li {
+    padding: 0.35em 0.65em;
+    color: #1B1A17;
+    background: var(--peel);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+  .outreach-entry__photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .outreach-entry__photos img {
+    width: 100%;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+  }
+  @media (max-width: 640px) {
+    .outreach-entry { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import AwardList from "../components/AwardList.astro";
 import awards from "../data/awards.yaml";
 ---
 <Base title="Awards" description="Recognition earned by FTC Team 16169 Banana Box.">
@@ -9,31 +10,24 @@ import awards from "../data/awards.yaml";
     <p>Honors earned on the field and in the judging room.</p>
   </section>
   <section class="wrap section" style="padding-top:0">
-    <ul class="awards">
-      {awards.map((a) => (
-        <li class="award">
-          <div class="award__date">{a.date}</div>
-          <div class="award__body">
-            <h3 class="award__title">{a.title}</h3>
-            <p class="award__event">{a.event}</p>
-            {a.detail && <p class="award__detail">{a.detail}</p>}
-          </div>
-        </li>
-      ))}
-    </ul>
+    {awards.length > 0 ? (
+      <AwardList items={awards} />
+    ) : (
+      <article class="awards-empty">
+        <h2>BIOBUZZ is in progress.</h2>
+        <p>Awards and competition results will be added as the season develops.</p>
+        <a class="btn btn--ghost" href="/seasons/decode#awards">View 2025–2026 awards</a>
+      </article>
+    )}
   </section>
 </Base>
 
 <style>
-  .awards { list-style:none; margin:0; padding:0; display:grid; gap:1rem; }
-  .award {
-    display:grid; grid-template-columns:160px 1fr; gap:1.5rem;
-    border:2px solid var(--ink); border-radius:var(--radius);
-    padding:1.4rem 1.5rem; background:var(--paper);
+  .awards-empty {
+    max-width: 760px; padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: var(--paper); border: 2px solid var(--ink);
+    border-radius: var(--radius); box-shadow: 10px 10px 0 var(--peel);
   }
-  .award__date { font-family:var(--font-mono); font-size:0.82rem; color:var(--bruise); padding-top:0.2rem; }
-  .award__title { margin:0; }
-  .award__event { margin:0.3rem 0 0; font-family:var(--font-mono); font-size:0.85rem; color:var(--bruise); }
-  .award__detail { margin:0.6rem 0 0; }
-  @media (max-width:640px){ .award{ grid-template-columns:1fr; gap:0.4rem; } }
+  .awards-empty h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  .awards-empty p { max-width: 55ch; margin: 1rem 0 2rem; color: var(--bruise); }
 </style>

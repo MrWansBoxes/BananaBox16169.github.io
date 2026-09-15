@@ -4,7 +4,17 @@ import StatStrip from "../components/StatStrip.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import Timeline from "../components/Timeline.astro";
 import site from "../data/site.yaml";
+import stats from "../data/stats.yaml";
+import milestones from "../data/milestones.yaml";
+import outreach from "../data/outreach.yaml";
+import { getCurrentOutreach, toOutreachTimeline } from "../utils/outreach.js";
+import { sortTimelineItems } from "../utils/timeline.js";
 import { Content as Intro } from "../copy/home-intro.md";
+
+const currentTimeline = sortTimelineItems([
+  ...milestones,
+  ...toOutreachTimeline(getCurrentOutreach(outreach.entries)),
+]);
 ---
 
 <Base>
@@ -21,17 +31,14 @@ import { Content as Intro } from "../copy/home-intro.md";
         </div>
       </div>
 
-      <!-- To use a real photo: replace this whole <div class="hero__media"> ...
-           </div> block with:
-           <div class="hero__media"><img src="/images/robot.jpg" alt="Our robot" /></div>
-           (drop robot.jpg into public/images/ first) -->
-      <div class="hero__media"><img src="/images/team/Robot.png" alt="Our robot" /></div>
+      <div class="hero__media hero__media--placeholder">
+        <span><strong>BIOBUZZ</strong><small>2026–2027 robot in progress</small></span>
       </div>
     </div>
   </section>
 
   <!-- ===================== STATS ===================== -->
-  <StatStrip />
+  <StatStrip items={stats} />
 
   <!-- ===================== INTRO ===================== -->
   <section class="section">
@@ -47,11 +54,11 @@ import { Content as Intro } from "../copy/home-intro.md";
       <p class="eyebrow">Explore</p>
       <div class="cards">
         <FeatureCard href="/robot" index="01" title="The Robot"
-          blurb="Design, strategy, and the code that drives it." />
+          blurb="Follow our 2026–2027 BIOBUZZ robot as it develops." />
         <FeatureCard href="/outreach" index="02" title="Outreach & Impact"
-          blurb="Workshops, events, and reaching 21,400+ people." />
+          blurb="Workshops, events, hosting, and team mentorship." />
         <FeatureCard href="/awards" index="03" title="Awards"
-          blurb="Recognition earned across the season." />
+          blurb="Current results and recognition from past seasons." />
       </div>
     </div>
   </section>
@@ -61,7 +68,7 @@ import { Content as Intro } from "../copy/home-intro.md";
     <div class="wrap">
       <p class="eyebrow">Season timeline</p>
       <h2 class="tl-head">Where we've been, month by month.</h2>
-      <Timeline />
+      <Timeline items={currentTimeline} />
     </div>
   </section>
 </Base>
@@ -94,6 +101,14 @@ import { Content as Intro } from "../copy/home-intro.md";
     color: var(--bruise); font-family: var(--font-mono); font-size: 0.85rem;
     line-height: 1.6;
   }
+  .hero__media--placeholder span { display: flex; flex-direction: column; gap: 0.5rem; }
+  .hero__media--placeholder strong {
+    color: var(--ink); font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 5rem);
+    font-weight: 900; line-height: 1; letter-spacing: -0.03em;
+  }
+  .hero__media--placeholder small {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  }
 
   .intro__body { font-size: clamp(1.15rem, 1.8vw, 1.5rem); line-height: 1.5; max-width: 40ch; }
   .intro__body :global(strong) { background: var(--peel); padding: 0 0.15em; }
@@ -101,9 +116,11 @@ import { Content as Intro } from "../copy/home-intro.md";
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 1.5rem; }
   .tl-head { max-width: 22ch; margin: 0.6rem 0 2.5rem; }
 
-  @media (max-width: 860px) {
+  @media (max-width: 1199px) {
     .hero__inner { grid-template-columns: 1fr; }
     .hero__media { order: -1; }
+  }
+  @media (max-width: 860px) {
     .cards { grid-template-columns: 1fr; }
   }
 </style>

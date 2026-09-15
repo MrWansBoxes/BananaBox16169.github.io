@@ -1,14 +1,20 @@
 ---
-import milestones from "../data/milestones.yaml";
+const { items } = Astro.props;
 ---
 
 <ol class="tl">
-  {milestones.map((m) => (
+  {items.map((m) => (
     <li class="tl__item">
       <div class="tl__date">{m.date}</div>
       <div class="tl__content">
-        {m.robot && (
-          <p class="tl__row"><span class="tl__tag tl__tag--robot">Robot</span>{m.robot}</p>
+        {m.engineering && (
+          <p class="tl__row"><span class="tl__tag tl__tag--robot">Engineering</span>{m.engineering}</p>
+        )}
+        {m.programming && (
+          <p class="tl__row"><span class="tl__tag tl__tag--programming">Programming</span>{m.programming}</p>
+        )}
+        {m.betaTesting && (
+          <p class="tl__row"><span class="tl__tag tl__tag--beta">Beta testing</span>{m.betaTesting}</p>
         )}
         {m.outreach && (
           <p class="tl__row"><span class="tl__tag tl__tag--out">Outreach</span>{m.outreach}</p>
@@ -41,6 +47,8 @@ import milestones from "../data/milestones.yaml";
     padding: 0.2em 0.55em; border-radius: 4px; border: 1.5px solid var(--ink);
   }
   .tl__tag--robot { background: var(--peel); color: var(--ink); }
+  .tl__tag--programming { background: var(--paper-2); color: var(--ink); }
+  .tl__tag--beta { background: var(--ink); color: var(--paper); }
   .tl__tag--out { background: var(--paper); color: var(--ink); }
   @media (max-width: 640px) {
     .tl__item { grid-template-columns: 1fr; gap: 0.5rem; }

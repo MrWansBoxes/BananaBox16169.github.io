@@ -14,14 +14,5 @@
 - value: "NH"
   label: "Region"
 
-- value: "21.4K+"
-  label: "People Reached"
-
-- value: "12"
-  label: "Teams Mentored"
-
-- value: "120+"
-  label: "Volunteer Hours"
-
-- value: "4"
-  label: "Robot Iterations"
+- value: "BIOBUZZ"
+  label: "Current Season"

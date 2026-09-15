@@ -1,10 +1,10 @@
 ---
-import stats from "../data/stats.yaml";
+const { items } = Astro.props;
 ---
 
 <section class="section--ink stat">
   <div class="wrap stat__row">
-    {stats.map((s) => (
+    {items.map((s) => (
       <div class="stat__cell">
         <span class="stat__value">{s.value}</span>
         <span class="stat__label">{s.label}</span>

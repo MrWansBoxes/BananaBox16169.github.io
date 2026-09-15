@@ -53,7 +53,7 @@ const desc = description ?? site.tagline;
         if (window.__bbMotion) return;
         window.__bbMotion = true;
 
-        var REVEAL_SEL = ".hero__text,.hero__media,.intro,.stat__cell,.card,.tl__item,.member,.award,.sponsor,.pagehead,.prose,.tl-head";
+        var REVEAL_SEL = ".hero__text,.hero__media,.intro,.stat__cell,.card,.tl__item,.member,.award,.outreach-entry,.sponsor,.pagehead,.prose,.tl-head";
         var bar = null;
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -99,10 +99,11 @@ const desc = description ?? site.tagline;
           updateBar();
 
           if (reduce || !("IntersectionObserver" in window)) return;
-          [".stat__row", ".cards", ".tl", ".grid", ".awards", ".sponsors"].forEach(function (sel) {
+          [".stat__row", ".cards", ".tl", ".grid", ".awards", ".outreach-list", ".sponsors"].forEach(function (sel) {
             document.querySelectorAll(sel).forEach(function (group) {
               Array.prototype.forEach.call(group.children, function (child, i) {
-                child.style.setProperty("--reveal-delay", i * 80 + "ms");
+                var delayIndex = sel === ".grid" ? i % 4 : i;
+                child.style.setProperty("--reveal-delay", delayIndex * 80 + "ms");
               });
             });
           });

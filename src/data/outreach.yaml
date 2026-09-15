@@ -1,0 +1,107 @@
+summaries:
+  decode:
+    description: "During DECODE, we completed 15 community outreach events, two international outreach efforts, and a community service project — over 120 volunteer hours reaching more than 21,000 people."
+    metrics:
+      - value: "15"
+        label: "Community Events"
+      - value: "21K+"
+        label: "People Reached"
+      - value: "120+"
+        label: "Volunteer Hours"
+
+entries:
+  - id: "ymca-library-april-2025"
+    title: "Plaistow Public Library & Londonderry YMCA"
+    startDate: "2025-04"
+    endDate: "2025-04"
+    dateLabel: "April 2025"
+    seasons: ["decode"]
+    description: "We introduced FLL and FTC through hands-on game challenges, robot soccer, and presentations for children, parents, and professionals. Our work with the Londonderry YMCA also helped form and mentor six FLL Challenge and Explore teams."
+    metrics:
+      - value: "105"
+        label: "Participants"
+    photos: []
+    links: []
+
+  - id: "thunder-over-nh-2025"
+    title: "Thunder Over NH Airshow"
+    startDate: "2025-09"
+    endDate: "2025-09"
+    dateLabel: "September 2025"
+    seasons: ["decode"]
+    description: "We demonstrated our robots and taught children and adults to drive them at the airshow."
+    metrics:
+      - value: "20K+"
+        label: "Attendees Reached"
+    photos: []
+    links: []
+
+  - id: "wicked-stem-2025"
+    title: "Wicked STEM Festival"
+    startDate: "2025-09"
+    endDate: "2025-09"
+    dateLabel: "September 2025"
+    seasons: ["decode"]
+    description: "We shared the only scoring robot in the FTC booth, along with a robot dog that helped draw children and professionals into conversations about FIRST."
+    metrics: []
+    photos: []
+    links: []
+
+  - id: "mit-urtc-2025"
+    title: "MIT Undergraduate Research Technology Conference"
+    startDate: "2025-10"
+    endDate: "2025-10"
+    dateLabel: "October 2025"
+    seasons: ["decode"]
+    description: "We showcased our robots to undergraduates and professors from around the world, connected with FIRST alumni, and sharpened our presentation skills."
+    metrics: []
+    photos: []
+    links: []
+
+  - id: "nh-first-scrimmage-2"
+    title: "NH FIRST Scrimmage #2"
+    startDate: "2025-11"
+    endDate: "2025-12"
+    dateLabel: "November–December 2025"
+    seasons: ["decode"]
+    description: "We hosted the scrimmage at Windham Center School and served in roles ranging from field inspection to emceeing."
+    metrics: []
+    photos: []
+    links: []
+
+  - id: "nh-ftc-qualifier-5"
+    title: "NH FTC Qualifier #5"
+    startDate: "2026-01"
+    endDate: "2026-02"
+    dateLabel: "January–February 2026"
+    seasons: ["decode"]
+    description: "We hosted the qualifier at Windham Center School and supported the event in roles ranging from field inspection to emceeing."
+    timelineSummary: "Hosted NH FTC Qualifier #5 and supported 26 teams."
+    metrics:
+      - value: "26"
+        label: "Teams"
+    photos: []
+    links: []
+
+  - id: "community-snow-shoveling"
+    title: "Community Snow-Shoveling Service"
+    startDate: ""
+    endDate: ""
+    dateLabel: "Date not recorded"
+    seasons: ["decode"]
+    description: "We organized a snow-shoveling service to help neighbors in our community."
+    metrics: []
+    photos: []
+    links: []
+
+  - id: "team-mentoring-may-2026"
+    title: "Team Mentoring & Formation"
+    startDate: "2026-05"
+    endDate: "2026-05"
+    dateLabel: "May 2026"
+    seasons: ["decode"]
+    description: "We mentored teams and helped form new FTC and FLL teams."
+    timelineSummary: "Mentored teams and helped form new FTC and FLL teams."
+    metrics: []
+    photos: []
+    links: []

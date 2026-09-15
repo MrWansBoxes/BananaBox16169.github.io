@@ -1,11 +1,12 @@
 ---
 import team from "../data/team.yaml";
+const { members = team } = Astro.props;
 const initials = (name) =>
   name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
 ---
 
 <ul class="grid">
-  {team.map((m) => (
+  {members.map((m) => (
     <li class="member">
       <div class="member__photo">
         {m.photo
