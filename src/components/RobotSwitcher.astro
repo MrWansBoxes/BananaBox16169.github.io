@@ -192,13 +192,15 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
   }
   .robot-event__gallery--single {
     grid-template-columns: 1fr;
-    max-width: 520px;
+    max-width: 330px;
   }
   .robot-event__figure { margin: 0; }
+  .robot-event__gallery:not(.robot-event__gallery--single) .robot-event__frame {
+    aspect-ratio: 9 / 10;
+  }
   .robot-event__frame {
     display: grid;
     place-items: center;
-    aspect-ratio: 4 / 3;
     overflow: hidden;
     background: var(--paper);
     border: 2px solid var(--ink);
@@ -207,8 +209,15 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
   }
   .robot-event__frame img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: contain;
+  }
+  .robot-event__gallery:not(.robot-event__gallery--single) .robot-event__frame img {
+    height: 100%;
+  }
+  .robot-event__gallery:not(.robot-event__gallery--single) .robot-event__figure:nth-child(2) img {
+    object-fit: cover;
+    object-position: center top;
   }
   .robot-event__figure figcaption {
     margin-top: 0.8rem;
