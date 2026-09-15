@@ -32,6 +32,7 @@ const decodeHighlights = [
   { value: "4", label: "Robot Iterations" },
 ];
 const decodeTeam = team.filter((member) => member.photo);
+const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-series");
 ---
 
 <Base
@@ -128,6 +129,16 @@ const decodeTeam = team.filter((member) => member.photo);
           <a class="btn btn--peel" href="/robot">View A/B robot details</a>
         </div>
       </section>
+
+      {gearUp && (
+        <section id="outreach" class="wrap section current-outreach">
+          <p class="eyebrow">Ongoing outreach</p>
+          <h2>{gearUp.title}</h2>
+          <p class="archive-lede">{gearUp.description}</p>
+          <p class="archive-lede">Started in August 2026 and continuing through the season.</p>
+          <a class="btn btn--peel" href="/outreach#gear-up-workshop-series">View completed sessions</a>
+        </section>
+      )}
     </>
   )}
 </Base>
@@ -157,6 +168,8 @@ const decodeTeam = team.filter((member) => member.photo);
     font-weight: 600;
   }
   .current-event .btn { margin-top: 1rem; }
+  .current-outreach h2 { max-width: 22ch; }
+  .current-outreach .btn { margin-top: 1.2rem; }
   .archive-section { scroll-margin-top: 90px; }
   .archive-section > h2,
   .archive-section > .wrap > h2 { max-width: 22ch; }

@@ -1,17 +1,36 @@
 ---
+import site from "../data/site.yaml";
 const { items } = Astro.props;
 ---
 
 <ol class="outreach-list">
   {items.map((item) => (
-    <li class="outreach-entry">
+    <li id={item.id} class="outreach-entry">
       <div class="outreach-entry__meta">
         <span>{item.dateLabel}</span>
         {item.location && <span>{item.location}</span>}
+        {item.status && <span class="outreach-entry__status">{item.status}</span>}
       </div>
       <div class="outreach-entry__body">
         <h3>{item.title}</h3>
         <p>{item.description}</p>
+        {item.sessionGroups?.length > 0 && (
+          <div class="outreach-entry__sessions">
+            <h4>Sessions so far</h4>
+            <div class="outreach-entry__session-groups">
+              {item.sessionGroups.map((group) => (
+                <section class="outreach-entry__session-group">
+                  <h5>{group.title}</h5>
+                  <ul>
+                    {group.sessions.map((session) => (
+                      <li><time datetime={session.datetime}>{session.date}</time><span>{session.title}</span></li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
         {item.metrics?.length > 0 && (
           <ul class="outreach-entry__metrics" aria-label={`${item.title} impact`}>
             {item.metrics.map((metric) => (
@@ -25,6 +44,14 @@ const { items } = Astro.props;
               <img src={photo.src} alt={photo.alt} loading="lazy" />
             ))}
           </div>
+        )}
+        {item.links?.length > 0 && (
+          <div class="outreach-entry__links">
+            {item.links.map((link) => <a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>)}
+          </div>
+        )}
+        {item.instagramCta && site.instagram && (
+          <p class="outreach-entry__instagram"><a class="btn btn--peel" href={site.instagram} target="_blank" rel="noopener">{item.instagramCta} <span aria-hidden="true">↗</span></a></p>
         )}
       </div>
     </li>
@@ -59,6 +86,25 @@ const { items } = Astro.props;
   }
   .outreach-entry h3 { margin: 0; }
   .outreach-entry p { margin: 0.6rem 0 0; }
+  .outreach-entry__status {
+    display: inline-block; width: fit-content; padding: 0.3em 0.6em;
+    color: #1B1A17; background: var(--peel); border: 1.5px solid #1B1A17;
+    border-radius: 4px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+  }
+  .outreach-entry__sessions { margin-top: 1.6rem; }
+  .outreach-entry__sessions h4 { margin: 0 0 0.9rem; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .outreach-entry__session-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .outreach-entry__session-group { padding: 1rem; border: 1.5px solid var(--ink); border-radius: var(--radius); }
+  .outreach-entry__session-group h5 { margin: 0 0 0.7rem; font-family: var(--font-display); font-size: 1.1rem; }
+  .outreach-entry__session-group ul { display: grid; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
+  .outreach-entry__session-group li { display: grid; gap: 0.1rem; }
+  .outreach-entry__session-group time { color: var(--bruise); font-family: var(--font-mono); font-size: 0.72rem; }
+  .outreach-entry__session-group li span { font-size: 0.92rem; line-height: 1.35; }
+  .outreach-entry__links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.2rem; }
+  .outreach-entry__links a { color: var(--peel-deep); font-weight: 600; text-underline-offset: 3px; }
+  .outreach-entry__links a:hover { color: var(--ink); background: var(--peel); }
+  .outreach-entry__instagram { margin-top: 1.4rem !important; }
+  .outreach-entry__instagram .btn { font-size: 0.76rem; }
   .outreach-entry__metrics {
     display: flex;
     flex-wrap: wrap;
@@ -89,5 +135,6 @@ const { items } = Astro.props;
   }
   @media (max-width: 640px) {
     .outreach-entry { grid-template-columns: 1fr; gap: 0.5rem; }
+    .outreach-entry__session-groups { grid-template-columns: 1fr; }
   }
 </style>
