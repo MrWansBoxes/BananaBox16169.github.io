@@ -60,6 +60,7 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
                         width={image.width}
                         height={image.height}
                         loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <figcaption>{image.caption}</figcaption>
@@ -177,7 +178,7 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
   .robot-event ul { margin: 1.2rem 0; padding-left: 1.25rem; }
   .robot-event li { margin-bottom: 0.35rem; }
   .robot-event__repo {
-    color: var(--peel-deep);
+    color: var(--link);
     font-weight: 600;
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;

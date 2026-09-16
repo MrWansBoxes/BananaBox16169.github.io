@@ -35,8 +35,8 @@ teams:
       - src: "/images/seasons/biobuzz/RobotIn24H/TeamAShooter24H.jpg"
         alt: "A Team shooter assembly during Robot in 24 Hours"
         caption: "A Team shooter assembly during Robot in 24 Hours"
-        width: 4032
-        height: 3024
+        width: 3024
+        height: 4032
 
   - robotId: "b-team"
     repository:
@@ -46,5 +46,5 @@ teams:
       - src: "/images/seasons/biobuzz/RobotIn24H/b-team-robot-in-24-hours-progress.jpg"
         alt: "B Team robot build progress during Robot in 24 Hours"
         caption: "B Team build progress during Robot in 24 Hours"
-        width: 4032
-        height: 3024
+        width: 3024
+        height: 4032

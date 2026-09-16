@@ -21,12 +21,18 @@ const isActive = (href) =>
       <span class="nav__name">{site.teamName}</span>
     </a>
 
-    <input type="checkbox" id="nav-toggle" class="nav__check" hidden />
-    <label for="nav-toggle" class="nav__burger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </label>
+    <button
+      id="nav-toggle"
+      class="nav__burger"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="primary-navigation"
+      aria-expanded="false"
+    >
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
 
-    <nav class="nav__links" aria-label="Primary">
+    <nav id="primary-navigation" class="nav__links" aria-label="Primary" data-open="false">
   {links.map((l) => (
     <a
       href={l.href}
@@ -36,7 +42,7 @@ const isActive = (href) =>
       {l.label}
     </a>
   ))}
-      <button id="theme-toggle" class="nav__theme" type="button" aria-label="Toggle dark mode">
+      <button id="theme-toggle" class="nav__theme" type="button" aria-label="Switch to dark mode" aria-pressed="false">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </button>
@@ -97,7 +103,10 @@ const isActive = (href) =>
   html.dark .icon-moon { display: none; }
 
   /* Mobile menu */
-  .nav__burger { display: none; cursor: pointer; padding: 8px; }
+  .nav__burger {
+    display: none; padding: 8px; background: transparent; color: var(--ink);
+    border: 0; cursor: pointer;
+  }
   .nav__burger span {
     display: block; width: 26px; height: 2.5px; background: var(--ink);
     margin: 5px 0; transition: transform 0.2s ease, opacity 0.2s ease;
@@ -109,10 +118,14 @@ const isActive = (href) =>
       flex-direction: column; align-items: flex-start; gap: 0.2rem;
       background: var(--paper); border-bottom: 2px solid var(--ink);
       padding: 1rem var(--gutter) 1.4rem;
-      max-height: 0; overflow: hidden; padding-block: 0;
-      transition: max-height 0.25s ease, padding-block 0.25s ease;
+      max-height: 0; overflow: hidden; padding-block: 0; visibility: hidden;
+      pointer-events: none;
+      transition: max-height 0.25s ease, padding-block 0.25s ease, visibility 0s linear 0.25s;
     }
-    .nav__check:checked ~ .nav__links { max-height: 480px; padding-block: 1rem 1.4rem; }
+    .nav__links[data-open="true"] {
+      max-height: 480px; padding-block: 1rem 1.4rem; visibility: visible;
+      pointer-events: auto; transition-delay: 0s;
+    }
     .nav__link { font-size: 1rem; padding: 0.5em 0; }
     .nav__cta { margin-top: 0.5rem; }
   }

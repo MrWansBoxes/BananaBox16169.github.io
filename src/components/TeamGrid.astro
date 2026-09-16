@@ -10,7 +10,7 @@ const initials = (name) =>
     <li class="member">
       <div class="member__photo">
         {m.photo
-          ? <img src={`/images/${m.photo}`} alt={m.name} loading="lazy" />
+          ? <img src={`/images/${m.photo}`} alt={m.name} loading="lazy" decoding="async" />
           : <span class="member__initials">{initials(m.name)}</span>}
       </div>
       <p class="member__name">{m.name}</p>

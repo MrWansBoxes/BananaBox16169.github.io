@@ -19,7 +19,11 @@ import seasons from "../../data/seasons.yaml";
             {season.current && <span class="season-card__badge">Current season</span>}
           </div>
           <h2>{season.name}</h2>
-          <a class="btn btn--ghost" href={`/seasons/${season.slug}`}>
+          <a
+            class="btn btn--ghost"
+            href={`/seasons/${season.slug}`}
+            aria-label={`View ${season.name} ${season.year} season`}
+          >
             View season <span aria-hidden="true">→</span>
           </a>
         </article>

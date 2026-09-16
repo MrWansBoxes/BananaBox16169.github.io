@@ -41,7 +41,7 @@ const { items } = Astro.props;
         {item.photos?.length > 0 && (
           <div class="outreach-entry__photos">
             {item.photos.map((photo) => (
-              <img src={photo.src} alt={photo.alt} loading="lazy" />
+              <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
             ))}
           </div>
         )}
@@ -101,7 +101,7 @@ const { items } = Astro.props;
   .outreach-entry__session-group time { color: var(--bruise); font-family: var(--font-mono); font-size: 0.72rem; }
   .outreach-entry__session-group li span { font-size: 0.92rem; line-height: 1.35; }
   .outreach-entry__links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.2rem; }
-  .outreach-entry__links a { color: var(--peel-deep); font-weight: 600; text-underline-offset: 3px; }
+  .outreach-entry__links a { color: var(--link); font-weight: 600; text-underline-offset: 3px; }
   .outreach-entry__links a:hover { color: var(--ink); background: var(--peel); }
   .outreach-entry__instagram { margin-top: 1.4rem !important; }
   .outreach-entry__instagram .btn { font-size: 0.76rem; }

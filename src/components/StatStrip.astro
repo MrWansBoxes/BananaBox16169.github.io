@@ -2,7 +2,7 @@
 const { items } = Astro.props;
 ---
 
-<section class="section--ink stat">
+<section class="section--ink stat" aria-label="Team statistics">
   <div class="wrap stat__row">
     {items.map((s) => (
       <div class="stat__cell">
@@ -34,5 +34,8 @@ const { items } = Astro.props;
   }
   @media (max-width: 640px) {
     .stat__row { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1.2rem; }
+  }
+  @media (max-width: 420px) {
+    .stat__value { font-size: clamp(1.75rem, 9vw, 2.2rem); }
   }
 </style>
