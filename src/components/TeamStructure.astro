@@ -29,11 +29,13 @@ import groups from "../data/team-groups.yaml";
     margin-top: 2.4rem;
   }
   .team-group {
-    padding: clamp(1.4rem, 3vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    padding: var(--card-pad);
     background: var(--paper);
     border: 2px solid var(--ink);
     border-radius: var(--radius);
-    box-shadow: 8px 8px 0 var(--peel);
+    box-shadow: var(--shadow-card);
   }
   .team-group h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
   .team-group p { margin: 0.9rem 0 1.4rem; color: var(--bruise); }
@@ -50,6 +52,7 @@ import groups from "../data/team-groups.yaml";
     font-size: 0.82rem;
     font-weight: 600;
   }
+  .team-group ul { margin-top: auto; }
   @media (max-width: 820px) {
     .team-groups { grid-template-columns: 1fr; }
   }

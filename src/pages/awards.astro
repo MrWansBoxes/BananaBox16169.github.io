@@ -9,7 +9,7 @@ import awards from "../data/awards.yaml";
     <h1>Awards</h1>
     <p>Honors earned on the field and in the judging room.</p>
   </section>
-  <section class="wrap section" style="padding-top:0">
+  <section class="wrap section section--flush-top">
     {awards.length > 0 ? (
       <AwardList items={awards} />
     ) : (
@@ -24,9 +24,9 @@ import awards from "../data/awards.yaml";
 
 <style>
   .awards-empty {
-    max-width: 760px; padding: clamp(1.5rem, 4vw, 2.5rem);
+    max-width: 760px; padding: var(--panel-pad);
     background: var(--paper); border: 2px solid var(--ink);
-    border-radius: var(--radius); box-shadow: 10px 10px 0 var(--peel);
+    border-radius: var(--radius); box-shadow: var(--shadow-card);
   }
   .awards-empty h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .awards-empty p { max-width: 55ch; margin: 1rem 0 2rem; color: var(--bruise); }

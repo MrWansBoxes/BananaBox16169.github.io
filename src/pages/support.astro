@@ -11,9 +11,9 @@ const real = sponsors.filter((s) => s.name && !s.name.startsWith("Sponsor /"));
     <h1>Support us</h1>
     <p>Sponsorship, mentorship, and partnership keep Banana Box building.</p>
   </section>
-  <section class="wrap section" style="padding-top:0">
+  <section class="wrap section section--flush-top">
     <article class="prose"><Content /></article>
-    <p style="margin-top:2rem">
+    <p class="support-cta">
       <a class="btn btn--peel" href={site.contactUrl} target="_blank" rel="noopener">Get in touch</a>
     </p>
   </section>
@@ -36,6 +36,7 @@ const real = sponsors.filter((s) => s.name && !s.name.startsWith("Sponsor /"));
 </Base>
 
 <style>
+  .support-cta { margin: 2.2rem 0 0; }
   .sponsors { list-style:none; margin:1.4rem 0 0; padding:0;
     display:flex; flex-wrap:wrap; gap:1rem; }
   .sponsor a, .sponsor span {
@@ -44,4 +45,7 @@ const real = sponsors.filter((s) => s.name && !s.name.startsWith("Sponsor /"));
     max-width:100%; overflow-wrap:anywhere; font-weight:800; background:var(--paper);
   }
   .sponsor a:hover { background:var(--peel); }
+  @media (max-width: 480px) {
+    .sponsor, .sponsor a, .sponsor span { width: 100%; }
+  }
 </style>

@@ -23,7 +23,7 @@ const initials = (name) =>
   .grid {
     list-style: none; margin: 0; padding: 0;
     display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
+    gap: clamp(1.4rem, 2.5vw, 1.8rem) 1.5rem;
   }
   .member__photo {
     aspect-ratio: 1; border: 2px solid var(--ink); border-radius: var(--radius);
@@ -36,11 +36,19 @@ const initials = (name) =>
     font-size: 2.6rem; color: var(--ink);
   }
   .member__name {
-    margin: 0.9rem 0 0.15rem; font-family: var(--font-display);
-    font-weight: 800; font-size: 1.2rem;
+    margin: 0.85rem 0 0.2rem; font-family: var(--font-display);
+    font-weight: 800; font-size: 1.2rem; line-height: 1.15;
   }
   .member__role {
     margin: 0; font-family: var(--font-mono); font-size: 0.78rem;
-    letter-spacing: 0.02em; color: var(--bruise);
+    letter-spacing: 0.02em; line-height: 1.45; color: var(--bruise);
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
+    .member__name { font-size: 1.05rem; }
+    .member__role { font-size: 0.7rem; }
+  }
+  @media (max-width: 340px) {
+    .grid { grid-template-columns: 1fr; }
   }
 </style>

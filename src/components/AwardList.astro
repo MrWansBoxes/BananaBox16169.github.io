@@ -20,8 +20,8 @@ const { items } = Astro.props;
   .award {
     display: grid;
     grid-template-columns: 160px 1fr;
-    gap: 1.5rem;
-    padding: 1.4rem 1.5rem;
+    gap: clamp(1rem, 3vw, 1.5rem);
+    padding: var(--card-pad);
     background: var(--paper);
     border: 2px solid var(--ink);
     border-radius: var(--radius);

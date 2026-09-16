@@ -86,7 +86,7 @@ const currentTimeline = sortTimelineItems([
     align-items: center;
   }
   .hero__title {
-    font-size: clamp(3.4rem, 12vw, 8rem); line-height: 0.9;
+    font-size: clamp(3.4rem, 9vw, 8rem); line-height: 0.9;
     margin: 0.2em 0 0; text-transform: uppercase;
   }
   .hero__tag {
@@ -119,10 +119,10 @@ const currentTimeline = sortTimelineItems([
   .intro__body { font-size: clamp(1.15rem, 1.8vw, 1.5rem); line-height: 1.5; max-width: 40ch; }
   .intro__body :global(strong) { background: var(--peel); padding: 0 0.15em; }
 
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 1.5rem; }
-  .tl-head { max-width: 22ch; margin: 0.6rem 0 2.5rem; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 1.7rem; }
+  .tl-head { max-width: 22ch; margin: 0.5rem 0 clamp(2rem, 4vw, 2.7rem); }
 
-  @media (max-width: 1199px) {
+  @media (max-width: 960px) {
     .hero__inner { grid-template-columns: 1fr; }
     .hero__media { order: -1; }
   }

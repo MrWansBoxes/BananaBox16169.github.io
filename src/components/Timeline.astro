@@ -27,9 +27,10 @@ const { items } = Astro.props;
 <style>
   .tl { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--ink); }
   .tl__item {
-    display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem;
+    display: grid; grid-template-columns: minmax(150px, 180px) 1fr; gap: clamp(1rem, 3vw, 1.5rem);
     padding: 0 0 2.2rem 1.8rem; position: relative;
   }
+  .tl__item:last-child { padding-bottom: 0; }
   .tl__item::before {
     content: ""; position: absolute; left: -8px; top: 4px;
     width: 14px; height: 14px; background: var(--peel);
@@ -39,7 +40,7 @@ const { items } = Astro.props;
     font-family: var(--font-mono); font-weight: 600; font-size: 0.85rem;
     letter-spacing: 0.03em; color: var(--bruise); padding-top: 0.1rem;
   }
-  .tl__row { margin: 0 0 0.6rem; display: flex; gap: 0.7rem; align-items: baseline; }
+  .tl__row { margin: 0 0 0.7rem; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
   .tl__row:last-child { margin-bottom: 0; }
   .tl__tag {
     flex: none; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600;
@@ -51,7 +52,7 @@ const { items } = Astro.props;
   .tl__tag--beta { background: var(--ink); color: var(--paper); }
   .tl__tag--out { background: var(--paper); color: var(--ink); }
   @media (max-width: 640px) {
-    .tl__item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .tl__item { grid-template-columns: 1fr; gap: 0.45rem; padding-left: 1.4rem; padding-bottom: 2rem; }
   }
   @media (max-width: 480px) {
     .tl__row { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
