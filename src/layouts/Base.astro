@@ -6,10 +6,10 @@ import Footer from "../components/Footer.astro";
 import site from "../data/site.yaml";
 
 const { title, description } = Astro.props;
-const pageTitle = title
-  ? `${title} — ${site.teamName} · FTC ${site.teamNumber}`
-  : `${site.teamName} — FTC ${site.teamNumber}`;
+const siteName = `${site.teamName} FTC ${site.teamNumber}`;
+const pageTitle = `${title ?? "Home"} | ${siteName}`;
 const desc = description ?? site.tagline;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -31,6 +31,16 @@ const desc = description ?? site.tagline;
     </script>
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,9 +52,10 @@ const desc = description ?? site.tagline;
     <ClientRouter />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div id="scroll-progress" aria-hidden="true"></div>
     <Nav />
-    <main transition:animate={slide({ duration: "0.3s" })}>
+    <main id="main-content" tabindex="-1" transition:animate={slide({ duration: "0.3s" })}>
       <slot />
     </main>
     <Footer />
@@ -56,6 +67,23 @@ const desc = description ?? site.tagline;
         var REVEAL_SEL = ".hero__text,.hero__media,.intro,.stat__cell,.card,.tl__item,.member,.award,.outreach-entry,.sponsor,.pagehead,.prose,.tl-head";
         var bar = null;
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function syncThemeButton(dark) {
+          var btn = document.getElementById("theme-toggle");
+          if (!btn) return;
+          btn.setAttribute("aria-pressed", String(dark));
+          btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        function setNavOpen(open, returnFocus) {
+          var btn = document.getElementById("nav-toggle");
+          var nav = document.getElementById("primary-navigation");
+          if (!btn || !nav) return;
+          btn.setAttribute("aria-expanded", String(open));
+          btn.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+          nav.dataset.open = String(open);
+          if (returnFocus) btn.focus();
+        }
 
         function updateBar() {
           if (!bar) return;
@@ -72,7 +100,26 @@ const desc = description ?? site.tagline;
           var btn = e.target.closest && e.target.closest("#theme-toggle");
           if (!btn) return;
           var dark = document.documentElement.classList.toggle("dark");
+          syncThemeButton(dark);
           try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (err) {}
+        });
+
+        document.addEventListener("click", function (e) {
+          var toggle = e.target.closest && e.target.closest("#nav-toggle");
+          if (toggle) {
+            setNavOpen(toggle.getAttribute("aria-expanded") !== "true", false);
+            return;
+          }
+          if (e.target.closest && e.target.closest("#primary-navigation a")) {
+            setNavOpen(false, false);
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          var toggle = document.getElementById("nav-toggle");
+          if (e.key === "Escape" && toggle && toggle.getAttribute("aria-expanded") === "true") {
+            setNavOpen(false, true);
+          }
         });
 
         function applyTheme() {
@@ -80,6 +127,7 @@ const desc = description ?? site.tagline;
             var t = localStorage.getItem("theme");
             var dark = t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches);
             document.documentElement.classList.toggle("dark", dark);
+            syncThemeButton(dark);
           } catch (e) {}
         }
 
@@ -97,8 +145,15 @@ const desc = description ?? site.tagline;
         function setup() {
           bar = document.getElementById("scroll-progress");
           updateBar();
+          syncThemeButton(document.documentElement.classList.contains("dark"));
 
-          if (reduce || !("IntersectionObserver" in window)) return;
+          if (reduce) return;
+          if (!("IntersectionObserver" in window)) {
+            document.querySelectorAll(REVEAL_SEL).forEach(function (el) {
+              el.classList.add("is-visible");
+            });
+            return;
+          }
           [".stat__row", ".cards", ".tl", ".grid", ".awards", ".outreach-list", ".sponsors"].forEach(function (sel) {
             document.querySelectorAll(sel).forEach(function (group) {
               Array.prototype.forEach.call(group.children, function (child, i) {

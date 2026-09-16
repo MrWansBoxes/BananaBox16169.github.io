@@ -20,7 +20,7 @@ const real = sponsors.filter((s) => s.name && !s.name.startsWith("Sponsor /"));
   {real.length > 0 && (
     <section class="section section--paper2">
       <div class="wrap">
-        <p class="eyebrow">Our supporters</p>
+        <h2 class="eyebrow">Our supporters</h2>
         <ul class="sponsors">
           {real.map((s) => (
             <li class="sponsor">
@@ -41,7 +41,7 @@ const real = sponsors.filter((s) => s.name && !s.name.startsWith("Sponsor /"));
   .sponsor a, .sponsor span {
     display:inline-block; border:2px solid var(--ink); border-radius:var(--radius);
     padding:1rem 1.6rem; text-decoration:none; font-family:var(--font-display);
-    font-weight:800; background:var(--paper);
+    max-width:100%; overflow-wrap:anywhere; font-weight:800; background:var(--paper);
   }
   .sponsor a:hover { background:var(--peel); }
 </style>
