@@ -69,8 +69,8 @@ const { items } = Astro.props;
   .outreach-entry {
     display: grid;
     grid-template-columns: 180px 1fr;
-    gap: 1.5rem;
-    padding: 1.4rem 1.5rem;
+    gap: clamp(1rem, 3vw, 1.5rem);
+    padding: var(--card-pad);
     background: var(--paper);
     border: 2px solid var(--ink);
     border-radius: var(--radius);
@@ -91,10 +91,10 @@ const { items } = Astro.props;
     color: #1B1A17; background: var(--peel); border: 1.5px solid #1B1A17;
     border-radius: 4px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
   }
-  .outreach-entry__sessions { margin-top: 1.6rem; }
+  .outreach-entry__sessions { margin-top: clamp(1.4rem, 3vw, 1.8rem); }
   .outreach-entry__sessions h4 { margin: 0 0 0.9rem; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .outreach-entry__session-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-  .outreach-entry__session-group { padding: 1rem; border: 1.5px solid var(--ink); border-radius: var(--radius); }
+  .outreach-entry__session-group { padding: clamp(0.9rem, 2vw, 1.1rem); border: 1.5px solid var(--ink); border-radius: var(--radius); }
   .outreach-entry__session-group h5 { margin: 0 0 0.7rem; font-family: var(--font-display); font-size: 1.1rem; }
   .outreach-entry__session-group ul { display: grid; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
   .outreach-entry__session-group li { display: grid; gap: 0.1rem; }

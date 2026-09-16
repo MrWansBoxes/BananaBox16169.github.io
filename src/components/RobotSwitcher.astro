@@ -139,15 +139,15 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
   }
   .robot-panels {
     grid-column: 1 / -1;
-    margin-top: 2rem;
+    margin-top: clamp(1.5rem, 3vw, 2rem);
   }
   .robot-panel {
     display: none;
-    padding: clamp(1.5rem, 4vw, 2.5rem);
+    padding: var(--panel-pad);
     background: var(--paper-2);
     border: 2px solid var(--ink);
     border-radius: var(--radius);
-    box-shadow: 10px 10px 0 var(--peel);
+    box-shadow: var(--shadow-card);
   }
   .robot-panel__status {
     margin: 0 0 0.8rem;
@@ -221,7 +221,7 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
     object-position: center top;
   }
   .robot-event__figure figcaption {
-    margin-top: 0.8rem;
+    margin-top: 0.75rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--bruise);
@@ -232,6 +232,6 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
   }
   @media (max-width: 520px) {
     .robot-switcher label { padding-inline: 0.6rem; font-size: 0.76rem; }
-    .robot-event__gallery { grid-template-columns: 1fr; }
+    .robot-event__gallery { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 </style>

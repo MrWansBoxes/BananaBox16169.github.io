@@ -10,7 +10,7 @@ import seasons from "../../data/seasons.yaml";
     <p>Explore the current Banana Box season and our growing team archive.</p>
   </section>
 
-  <section class="wrap section" style="padding-top:0">
+  <section class="wrap section section--flush-top">
     <div class="seasons">
       {seasons.map((season) => (
         <article class="season-card">
@@ -41,8 +41,8 @@ import seasons from "../../data/seasons.yaml";
   .season-card {
     display: flex;
     flex-direction: column;
-    min-height: 300px;
-    padding: 1.6rem 1.5rem;
+    min-height: 280px;
+    padding: var(--card-pad);
     background: var(--paper);
     border: 2px solid var(--ink);
     border-radius: var(--radius);
@@ -99,6 +99,6 @@ import seasons from "../../data/seasons.yaml";
   }
   @media (max-width: 860px) {
     .seasons { grid-template-columns: 1fr; }
-    .season-card { min-height: 240px; }
+    .season-card { min-height: 220px; }
   }
 </style>

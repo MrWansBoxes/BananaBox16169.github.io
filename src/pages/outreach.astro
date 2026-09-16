@@ -16,19 +16,23 @@ const currentTimeline = sortTimelineItems(toOutreachTimeline(currentOutreach));
     <h1>Outreach &amp; impact</h1>
     <p>Spreading FIRST robotics through workshops, events, and partnerships.</p>
   </section>
-  <section class="wrap section" style="padding-top:0">
+  <section class="wrap section section--flush-top section--flow">
     <article class="prose"><Content /></article>
   </section>
-  <section class="wrap section" style="padding-top:0">
+  <section class="wrap section section--flush-top">
     <p class="eyebrow">Season timeline</p>
-    <h2 style="margin:0.4rem 0 2.4rem;max-width:22ch">Robot and outreach, month by month</h2>
+    <h2 class="outreach-heading">Robot and outreach, month by month</h2>
     <Timeline items={currentTimeline} />
   </section>
   <section class="section section--paper2">
     <div class="wrap">
       <p class="eyebrow">Outreach in detail</p>
-      <h2 style="margin:0.4rem 0 2.4rem;max-width:22ch">Our Impact</h2>
+      <h2 class="outreach-heading">Our Impact</h2>
       <OutreachList items={currentOutreach} />
     </div>
   </section>
 </Base>
+
+<style>
+  .outreach-heading { max-width: 22ch; margin: 0.4rem 0 clamp(2rem, 4vw, 2.6rem); }
+</style>

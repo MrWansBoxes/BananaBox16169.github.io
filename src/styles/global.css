@@ -26,6 +26,10 @@
   --radius: 6px;
   --maxw: 1200px;
   --gutter: clamp(20px, 5vw, 64px);
+  --section-space: clamp(56px, 8vw, 112px);
+  --card-pad: clamp(1.4rem, 2.4vw, 1.8rem);
+  --panel-pad: clamp(1.5rem, 4vw, 2.5rem);
+  --shadow-card: 8px 8px 0 var(--peel);
 }
 
 /* ---- Reset-ish base ---- */
@@ -66,17 +70,18 @@ a { color: inherit; }
 h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 800;
-  line-height: 0.98;
   letter-spacing: -0.02em;
   margin: 0;
 }
-h1 { font-size: clamp(2.6rem, 7vw, 5.4rem); }
-h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
-h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 0.94; }
+h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.02; }
+h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.08; letter-spacing: -0.01em; }
 
 /* ---- Layout helpers ---- */
 .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
-.section { padding-block: clamp(56px, 9vw, 120px); }
+.section { padding-block: var(--section-space); }
+.section--flush-top { padding-top: 0; }
+.section--flow { padding-bottom: clamp(52px, 7vw, 88px); }
 .section--paper2 { background: var(--paper-2); }
 .section--ink { background: var(--ink); color: var(--paper); }
 
@@ -166,6 +171,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.01em; }
     opacity: 1;
     transform: none;
   }
+  html.js .card.is-visible:hover { transform: translateY(-4px); }
 }
 /* ---- Scroll progress bar ---- */
 #scroll-progress {

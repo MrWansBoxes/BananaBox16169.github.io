@@ -16,7 +16,8 @@ const { href, index, title, blurb } = Astro.props;
     display: grid; grid-template-columns: auto 1fr auto; align-items: start;
     gap: 1.1rem; text-decoration: none; color: var(--ink);
     background: var(--paper); border: 2px solid var(--ink);
-    border-radius: var(--radius); padding: 1.6rem 1.5rem;
+    border-radius: var(--radius); padding: var(--card-pad);
+    min-height: 100%;
     transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
   }
   .card:hover { transform: translateY(-4px); background: var(--peel);
@@ -27,10 +28,14 @@ const { href, index, title, blurb } = Astro.props;
   }
   .card__title {
     display: block; font-family: var(--font-display); font-weight: 800;
-    font-size: 1.5rem; line-height: 1.05; margin-bottom: 0.4rem;
+    font-size: clamp(1.35rem, 2.2vw, 1.55rem); line-height: 1.05; margin-bottom: 0.5rem;
   }
   .card__blurb { color: var(--bruise); font-size: 0.95rem; }
   .card:hover .card__blurb { color: var(--ink); }
   .card__go { font-size: 1.5rem; align-self: center; transition: transform 0.14s ease; }
   .card:hover .card__go { transform: translateX(4px); }
+  @media (max-width: 420px) {
+    .card { grid-template-columns: 1fr auto; gap: 0.8rem; }
+    .card__index { grid-column: 1 / -1; padding-top: 0; }
+  }
 </style>

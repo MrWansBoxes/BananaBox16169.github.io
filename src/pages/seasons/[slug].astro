@@ -109,7 +109,7 @@ const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-s
     </>
   ) : (
     <>
-      <section class="wrap section" style="padding-top:0">
+      <section class="wrap section section--flush-top">
         <article class="season-shell">
           <h2>Season in progress</h2>
           <p>This season is currently in progress. This page is ready for updates as BIOBUZZ develops.</p>
@@ -153,11 +153,11 @@ const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-s
 <style>
   .season-shell {
     max-width: 760px;
-    padding: clamp(1.5rem, 4vw, 2.5rem);
+    padding: var(--panel-pad);
     background: var(--paper);
     border: 2px solid var(--ink);
     border-radius: var(--radius);
-    box-shadow: 10px 10px 0 var(--peel);
+    box-shadow: var(--shadow-card);
   }
   .season-shell h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .season-shell p {
@@ -194,7 +194,7 @@ const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-s
     grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
-    margin-top: 2.4rem;
+    margin-top: clamp(2rem, 4vw, 2.6rem);
   }
   .robot-archive__media {
     position: sticky;
@@ -203,10 +203,10 @@ const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-s
     background: var(--paper);
     border: 2px solid var(--ink);
     border-radius: var(--radius);
-    box-shadow: 10px 10px 0 var(--peel);
+    box-shadow: var(--shadow-card);
   }
-  .robot-archive__media img { width: 100%; }
-  .archive-back { padding-block: 0 clamp(56px, 9vw, 120px); }
+  .robot-archive__media img { width: 100%; height: auto; aspect-ratio: 1070 / 960; object-fit: contain; }
+  .archive-back { padding-block: 0 var(--section-space); }
   @media (max-width: 800px) {
     .robot-archive { grid-template-columns: 1fr; }
     .robot-archive__media { position: static; }
