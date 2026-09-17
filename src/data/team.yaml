@@ -1,6 +1,6 @@
 # ============================================================
 # THE TEAM  —  one block per member.
-# "photo" is OPTIONAL: drop a photo in  public/images/team/
+# "photo" is OPTIONAL: drop a photo in  src/assets/images/team/
 # and put its file name here (e.g. photo: "team/rayhan.jpg").
 # Leave photo blank ("") to show initials instead.
 # ============================================================

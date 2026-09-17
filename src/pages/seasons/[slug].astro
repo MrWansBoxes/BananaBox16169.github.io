@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
 import AwardList from "../../components/AwardList.astro";
 import BetaTesting from "../../components/BetaTesting.astro";
 import OutreachList from "../../components/OutreachList.astro";
@@ -15,6 +16,7 @@ import team from "../../data/team.yaml";
 import { getSeasonOutreach } from "../../utils/outreach.js";
 import { Content as DecodeRobot } from "../../copy/seasons/decode/robot.md";
 import { Content as DecodeWhoWeAre } from "../../copy/seasons/decode/who-we-are.md";
+import bumblebeeImage from "../../assets/images/seasons/decode/bumblebee.png";
 
 export function getStaticPaths() {
   return seasons.map((season) => ({
@@ -63,11 +65,14 @@ const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-s
         <h2>Bumblebee</h2>
         <div class="robot-archive">
           <div class="robot-archive__media">
-            <img
-              src="/images/seasons/decode/bumblebee.png"
+            <Image
+              src={bumblebeeImage}
               alt="Bumblebee, Banana Box's DECODE robot"
-              width="1070"
-              height="960"
+              width={800}
+              widths={[320, 480, 640, 800]}
+              sizes="(max-width: 800px) calc(100vw - 40px), 400px"
+              format="webp"
+              quality={82}
               loading="lazy"
               decoding="async"
             />

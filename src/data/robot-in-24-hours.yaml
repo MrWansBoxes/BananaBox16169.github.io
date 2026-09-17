@@ -27,24 +27,18 @@ teams:
       label: "A Team Robot in 24 Hours GitHub repository"
       url: "https://github.com/MrWansBoxes/Robot-in-24-hours"
     images:
-      - src: "/images/seasons/biobuzz/RobotIn24H/TeamARobotProg24H.jpg"
+      - asset: "TeamARobotProg24H.jpg"
         alt: "A Team robot build progress during Robot in 24 Hours"
         caption: "A Team robot build progress during Robot in 24 Hours"
-        width: 2657
-        height: 2976
-      - src: "/images/seasons/biobuzz/RobotIn24H/TeamAShooter24H.jpg"
+      - asset: "TeamAShooter24H.jpg"
         alt: "A Team shooter assembly during Robot in 24 Hours"
         caption: "A Team shooter assembly during Robot in 24 Hours"
-        width: 3024
-        height: 4032
 
   - robotId: "b-team"
     repository:
       label: "B Team Robot in 24 Hours GitHub repository"
       url: "https://github.com/MrWansBoxes/RobotIn24HoursB"
     images:
-      - src: "/images/seasons/biobuzz/RobotIn24H/b-team-robot-in-24-hours-progress.jpg"
+      - asset: "b-team-robot-in-24-hours-progress.jpg"
         alt: "B Team robot build progress during Robot in 24 Hours"
         caption: "B Team build progress during Robot in 24 Hours"
-        width: 3024
-        height: 4032
