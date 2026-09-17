@@ -1,22 +1,53 @@
 ---
+import { Image } from "astro:assets";
 import team from "../data/team.yaml";
-const { members = team } = Astro.props;
+const { members = team, eagerCount = 0 } = Astro.props;
+const importedPhotos = import.meta.glob("../assets/images/team/*", { eager: true, import: "default" });
+const photos = Object.fromEntries(
+  Object.entries(importedPhotos).map(([path, photo]) => [`team/${path.split("/").pop()}`, photo]),
+);
 const initials = (name) =>
   name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+
+const missingPhotos = members.filter((member) => member.photo && !photos[member.photo]);
+if (missingPhotos.length > 0) {
+  throw new Error(`Missing team photos: ${missingPhotos.map((member) => member.photo).join(", ")}`);
+}
+
+const widthsFor = (photo) => {
+  const maximumWidth = Math.min(photo.width, 512);
+  return [...new Set([160, 240, 320, 480, maximumWidth].filter((width) => width <= maximumWidth))];
+};
 ---
 
 <ul class="grid">
-  {members.map((m) => (
-    <li class="member">
-      <div class="member__photo">
-        {m.photo
-          ? <img src={`/images/${m.photo}`} alt={m.name} loading="lazy" decoding="async" />
-          : <span class="member__initials">{initials(m.name)}</span>}
-      </div>
-      <p class="member__name">{m.name}</p>
-      <p class="member__role">{m.role}</p>
-    </li>
-  ))}
+  {members.map((m, index) => {
+    const photo = photos[m.photo];
+    const isEager = index < eagerCount;
+
+    return (
+      <li class="member">
+        <div class="member__photo">
+          {photo
+            ? <Image
+                src={photo}
+                alt={m.name}
+                width={Math.min(photo.width, 512)}
+                widths={widthsFor(photo)}
+                sizes="(max-width: 340px) calc(100vw - 40px), (max-width: 480px) calc((100vw - 56px) / 2), 250px"
+                format="webp"
+                quality={82}
+                loading={isEager ? "eager" : "lazy"}
+                decoding="async"
+                fetchpriority={index === 0 && isEager ? "high" : "auto"}
+              />
+            : <span class="member__initials">{initials(m.name)}</span>}
+        </div>
+        <p class="member__name">{m.name}</p>
+        <p class="member__role">{m.role}</p>
+      </li>
+    );
+  })}
 </ul>
 
 <style>

@@ -1,6 +1,16 @@
 ---
+import { Image } from "astro:assets";
 import robots from "../data/robots.yaml";
 import robotIn24Hours from "../data/robot-in-24-hours.yaml";
+import aTeamProgress from "../assets/images/seasons/biobuzz/RobotIn24H/TeamARobotProg24H.jpg";
+import aTeamShooter from "../assets/images/seasons/biobuzz/RobotIn24H/TeamAShooter24H.jpg";
+import bTeamProgress from "../assets/images/seasons/biobuzz/RobotIn24H/b-team-robot-in-24-hours-progress.jpg";
+
+const eventImages = {
+  "TeamARobotProg24H.jpg": aTeamProgress,
+  "TeamAShooter24H.jpg": aTeamShooter,
+  "b-team-robot-in-24-hours-progress.jpg": bTeamProgress,
+};
 ---
 
 <fieldset class="robot-switcher">
@@ -51,21 +61,29 @@ import robotIn24Hours from "../data/robot-in-24-hours.yaml";
                   { "robot-event__gallery--single": eventTeam.images.length === 1 },
                 ]}
               >
-                {eventTeam.images.map((image) => (
-                  <figure class="robot-event__figure">
-                    <div class="robot-event__frame">
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        width={image.width}
-                        height={image.height}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <figcaption>{image.caption}</figcaption>
-                  </figure>
-                ))}
+                {eventTeam.images.map((image) => {
+                  const asset = eventImages[image.asset];
+                  if (!asset) throw new Error(`Missing Robot in 24 Hours image: ${image.asset}`);
+
+                  return (
+                    <figure class="robot-event__figure">
+                      <div class="robot-event__frame">
+                        <Image
+                          src={asset}
+                          alt={image.alt}
+                          width={Math.min(asset.width, 720)}
+                          widths={[240, 360, 480, 720]}
+                          sizes="(max-width: 520px) calc(100vw - 88px), 330px"
+                          format="webp"
+                          quality={82}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <figcaption>{image.caption}</figcaption>
+                    </figure>
+                  );
+                })}
               </div>
             )}
           </section>
