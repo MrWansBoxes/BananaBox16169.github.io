@@ -33,6 +33,10 @@ teams:
       - asset: "TeamAShooter24H.jpg"
         alt: "A Team shooter assembly during Robot in 24 Hours"
         caption: "A Team shooter assembly during Robot in 24 Hours"
+    completedImage:
+      asset: "TeamARobot.JPG"
+      alt: "A Team completed Robot in 24 Hours robot"
+      caption: "A Team completed Robot in 24 Hours robot"
 
   - robotId: "b-team"
     repository:
@@ -42,3 +46,7 @@ teams:
       - asset: "b-team-robot-in-24-hours-progress.jpg"
         alt: "B Team robot build progress during Robot in 24 Hours"
         caption: "B Team build progress during Robot in 24 Hours"
+    completedImage:
+      asset: "TeamBRobot.JPG"
+      alt: "B Team completed Robot in 24 Hours robot"
+      caption: "B Team completed Robot in 24 Hours robot"

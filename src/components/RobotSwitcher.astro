@@ -2,13 +2,17 @@
 import { Image } from "astro:assets";
 import robots from "../data/robots.yaml";
 import robotIn24Hours from "../data/robot-in-24-hours.yaml";
+import aTeamRobot from "../assets/images/seasons/biobuzz/RobotIn24H/TeamARobot.JPG";
 import aTeamProgress from "../assets/images/seasons/biobuzz/RobotIn24H/TeamARobotProg24H.jpg";
 import aTeamShooter from "../assets/images/seasons/biobuzz/RobotIn24H/TeamAShooter24H.jpg";
+import bTeamRobot from "../assets/images/seasons/biobuzz/RobotIn24H/TeamBRobot.JPG";
 import bTeamProgress from "../assets/images/seasons/biobuzz/RobotIn24H/b-team-robot-in-24-hours-progress.jpg";
 
-const eventImages = {
+const robotImages = {
+  "TeamARobot.JPG": aTeamRobot,
   "TeamARobotProg24H.jpg": aTeamProgress,
   "TeamAShooter24H.jpg": aTeamShooter,
+  "TeamBRobot.JPG": bTeamRobot,
   "b-team-robot-in-24-hours-progress.jpg": bTeamProgress,
 };
 ---
@@ -31,6 +35,10 @@ const eventImages = {
   <div class="robot-panels">
     {robots.map((robot) => {
       const eventTeam = robotIn24Hours.teams.find((team) => team.robotId === robot.id);
+      const completedImage = robotImages[eventTeam.completedImage.asset];
+      if (!completedImage) {
+        throw new Error(`Missing completed Robot in 24 Hours image: ${eventTeam.completedImage.asset}`);
+      }
 
       return (
         <section
@@ -62,7 +70,7 @@ const eventImages = {
                 ]}
               >
                 {eventTeam.images.map((image) => {
-                  const asset = eventImages[image.asset];
+                  const asset = robotImages[image.asset];
                   if (!asset) throw new Error(`Missing Robot in 24 Hours image: ${image.asset}`);
 
                   return (
@@ -86,6 +94,22 @@ const eventImages = {
                 })}
               </div>
             )}
+            <figure class="robot-event__figure robot-event__completed">
+              <div class="robot-event__frame">
+                <Image
+                  src={completedImage}
+                  alt={eventTeam.completedImage.alt}
+                  width={completedImage.width}
+                  widths={[320, 480, 640, 800, 1024]}
+                  sizes="(max-width: 520px) calc(100vw - 88px), 520px"
+                  format="webp"
+                  quality={82}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>{eventTeam.completedImage.caption}</figcaption>
+            </figure>
           </section>
         </section>
       );
@@ -212,6 +236,10 @@ const eventImages = {
   .robot-event__gallery--single {
     grid-template-columns: 1fr;
     max-width: 330px;
+  }
+  .robot-event__completed {
+    max-width: 520px;
+    margin-top: clamp(1.8rem, 4vw, 2.5rem);
   }
   .robot-event__figure { margin: 0; }
   .robot-event__gallery:not(.robot-event__gallery--single) .robot-event__frame {
