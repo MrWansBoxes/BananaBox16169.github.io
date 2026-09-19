@@ -1,20 +1,5 @@
 ---
-import { Image } from "astro:assets";
 import robots from "../data/robots.yaml";
-import robotIn24Hours from "../data/robot-in-24-hours.yaml";
-import aTeamRobot from "../assets/images/seasons/biobuzz/RobotIn24H/TeamARobot.JPG";
-import aTeamProgress from "../assets/images/seasons/biobuzz/RobotIn24H/TeamARobotProg24H.jpg";
-import aTeamShooter from "../assets/images/seasons/biobuzz/RobotIn24H/TeamAShooter24H.jpg";
-import bTeamRobot from "../assets/images/seasons/biobuzz/RobotIn24H/TeamBRobot.JPG";
-import bTeamProgress from "../assets/images/seasons/biobuzz/RobotIn24H/b-team-robot-in-24-hours-progress.jpg";
-
-const robotImages = {
-  "TeamARobot.JPG": aTeamRobot,
-  "TeamARobotProg24H.jpg": aTeamProgress,
-  "TeamAShooter24H.jpg": aTeamShooter,
-  "TeamBRobot.JPG": bTeamRobot,
-  "b-team-robot-in-24-hours-progress.jpg": bTeamProgress,
-};
 ---
 
 <fieldset class="robot-switcher">
@@ -33,87 +18,18 @@ const robotImages = {
   ))}
 
   <div class="robot-panels">
-    {robots.map((robot) => {
-      const eventTeam = robotIn24Hours.teams.find((team) => team.robotId === robot.id);
-      const completedImage = robotImages[eventTeam.completedImage.asset];
-      if (!completedImage) {
-        throw new Error(`Missing completed Robot in 24 Hours image: ${eventTeam.completedImage.asset}`);
-      }
-
-      return (
-        <section
-          class="robot-panel"
-          id={`robot-panel-${robot.id}`}
-          data-robot={robot.id}
-          aria-labelledby={`robot-label-${robot.id}`}
-        >
-          <p class="robot-panel__status">{robot.status}</p>
-          <h2>{robot.label}</h2>
-          <p class="robot-panel__description">{robot.description}</p>
-
-          <section class="robot-event">
-            <p class="robot-event__eyebrow">24-hour build</p>
-            <h3>{robotIn24Hours.title}</h3>
-            <ul>
-              {robotIn24Hours.robotFacts.map((fact) => <li>{fact}</li>)}
-            </ul>
-            <p>
-              <a class="robot-event__repo" href={eventTeam.repository.url}>
-                {eventTeam.repository.label}
-              </a>
-            </p>
-            {eventTeam.images && (
-              <div
-                class:list={[
-                  "robot-event__gallery",
-                  { "robot-event__gallery--single": eventTeam.images.length === 1 },
-                ]}
-              >
-                {eventTeam.images.map((image) => {
-                  const asset = robotImages[image.asset];
-                  if (!asset) throw new Error(`Missing Robot in 24 Hours image: ${image.asset}`);
-
-                  return (
-                    <figure class="robot-event__figure">
-                      <div class="robot-event__frame">
-                        <Image
-                          src={asset}
-                          alt={image.alt}
-                          width={Math.min(asset.width, 720)}
-                          widths={[240, 360, 480, 720]}
-                          sizes="(max-width: 520px) calc(100vw - 88px), 330px"
-                          format="webp"
-                          quality={82}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                      <figcaption>{image.caption}</figcaption>
-                    </figure>
-                  );
-                })}
-              </div>
-            )}
-            <figure class="robot-event__figure robot-event__completed">
-              <div class="robot-event__frame">
-                <Image
-                  src={completedImage}
-                  alt={eventTeam.completedImage.alt}
-                  width={completedImage.width}
-                  widths={[320, 480, 640, 800, 1024]}
-                  sizes="(max-width: 520px) calc(100vw - 88px), 520px"
-                  format="webp"
-                  quality={82}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <figcaption>{eventTeam.completedImage.caption}</figcaption>
-            </figure>
-          </section>
-        </section>
-      );
-    })}
+    {robots.map((robot) => (
+      <section
+        class="robot-panel"
+        id={`robot-panel-${robot.id}`}
+        data-robot={robot.id}
+        aria-labelledby={`robot-label-${robot.id}`}
+      >
+        <p class="robot-panel__status">{robot.status}</p>
+        <h2>{robot.label}</h2>
+        <p class="robot-panel__description">{robot.description}</p>
+      </section>
+    ))}
   </div>
 </fieldset>
 
@@ -202,82 +118,11 @@ const robotImages = {
   }
   .robot-panel h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
   .robot-panel__description { max-width: 58ch; margin: 1rem 0 0; }
-  .robot-event {
-    margin-top: clamp(2rem, 5vw, 3.2rem);
-    padding-top: clamp(1.5rem, 4vw, 2.2rem);
-    border-top: 2px solid var(--ink);
-  }
-  .robot-event__eyebrow {
-    margin: 0 0 0.7rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--bruise);
-  }
-  .robot-event h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-  .robot-event ul { margin: 1.2rem 0; padding-left: 1.25rem; }
-  .robot-event li { margin-bottom: 0.35rem; }
-  .robot-event__repo {
-    color: var(--link);
-    font-weight: 600;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-  }
-  .robot-event__repo:hover { color: var(--ink); background: var(--peel); }
-  .robot-event__gallery {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.2rem;
-    max-width: 680px;
-    margin-top: 2rem;
-  }
-  .robot-event__gallery--single {
-    grid-template-columns: 1fr;
-    max-width: 330px;
-  }
-  .robot-event__completed {
-    max-width: 520px;
-    margin-top: clamp(1.8rem, 4vw, 2.5rem);
-  }
-  .robot-event__figure { margin: 0; }
-  .robot-event__gallery:not(.robot-event__gallery--single) .robot-event__frame {
-    aspect-ratio: 9 / 10;
-  }
-  .robot-event__frame {
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    background: var(--paper);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius);
-    box-shadow: 8px 8px 0 var(--peel);
-  }
-  .robot-event__frame img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
-  .robot-event__gallery:not(.robot-event__gallery--single) .robot-event__frame img {
-    height: 100%;
-  }
-  .robot-event__gallery:not(.robot-event__gallery--single) .robot-event__figure:nth-child(2) img {
-    object-fit: cover;
-    object-position: center top;
-  }
-  .robot-event__figure figcaption {
-    margin-top: 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--bruise);
-  }
   #robot-a-team:checked ~ .robot-panels [data-robot="a-team"],
   #robot-b-team:checked ~ .robot-panels [data-robot="b-team"] {
     display: block;
   }
   @media (max-width: 520px) {
     .robot-switcher label { padding-inline: 0.6rem; font-size: 0.76rem; }
-    .robot-event__gallery { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 </style>
