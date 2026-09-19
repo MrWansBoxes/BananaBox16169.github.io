@@ -27,9 +27,6 @@ entries:
         outreach: "Continuing weekly Gear Up! workshops for FLL and FTC teams."
     metrics: []
     photos: []
-    links:
-      - label: "Learn about Robot in 24 Hours"
-        href: "/outreach#robot-in-24-hours"
     instagramCta: "See Gear Up session posts and updates on Instagram"
     sessionGroups:
       - title: "FLL Challenge"

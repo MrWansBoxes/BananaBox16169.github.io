@@ -8,22 +8,22 @@ Our website is live at [www.ftcbananabox.com](https://www.ftcbananabox.com).
 
 ## The Team
 
-| Name | Role |
-| --- | --- |
-| Rayhan Riaz | Team Captain, Main Driver |
-| Govind Valiyodiyil | Vice-Captain, Lead Designer |
-| Ethan Deandrea | Lead Programmer, Second Driver |
-| Kiaan Mehta | Programmer, Drive Coach |
-| Stefan Barbu | Lead Scout, Mechanic |
-| Aditya Biju | Lead Mechanic, Co-Human Player |
-| Pranav Mantena | Outreach, Human Player |
-| Matthew Dona | — |
-| Isaac Lin | Programming, CAD |
-| Akash | CAD, Mechanical |
-| Sathvik | CAD |
-| Dhruv Singh | CAD, Portfolio |
-| Pranav Pakalapati | Programming, Portfolio |
-| Tarun | Programming |
+| Name               | Role                           |
+|--------------------|--------------------------------|
+| Rayhan Riaz        | Team Captain, Main Driver      |
+| Govind Valiyodiyil | Vice-Captain, Lead Designer    |
+| Ethan Deandrea     | Lead Programmer, Second Driver |
+| Kiaan Mehta        | Programmer, Drive Coach        |
+| Stefan Barbu       | Lead Scout, Mechanic           |
+| Aditya Biju        | Lead Mechanic, Co-Human Player |
+| Pranav Mantena     | Outreach, Human Player         |
+| Matthew Dona       | —                              |
+| Isaac Lin          | Programming, CAD               |
+| Akash              | CAD, Mechanical                |
+| Sathvik            | CAD                            |
+| Dhruv Singh        | CAD, Portfolio                 |
+| Pranav Pakalapati  | Programming, Portfolio         |
+| Tarun              | Programming                    |
 
 ---
 
