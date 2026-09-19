@@ -29,7 +29,7 @@ entries:
     photos: []
     links:
       - label: "Learn about Robot in 24 Hours"
-        href: "/robot"
+        href: "/outreach#robot-in-24-hours"
     instagramCta: "See Gear Up session posts and updates on Instagram"
     sessionGroups:
       - title: "FLL Challenge"

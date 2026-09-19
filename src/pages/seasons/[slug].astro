@@ -33,7 +33,7 @@ const decodeHighlights = [
   ...outreach.summaries.decode.metrics,
   { value: "4", label: "Robot Iterations" },
 ];
-const decodeTeam = team.filter((member) => member.photo);
+const decodeTeam = team.filter((member) => member.photo && member.name !== "Sathvik");
 const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-series");
 ---
 
@@ -138,7 +138,7 @@ const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-s
           </p>
           <p>{robotIn24Hours.summary}</p>
           <p>{robotIn24Hours.context}</p>
-          <a class="btn btn--peel" href="/robot">View A/B robot details</a>
+          <a class="btn btn--peel" href="/outreach#robot-in-24-hours">View Robot in 24 Hours outreach</a>
         </div>
       </section>
 

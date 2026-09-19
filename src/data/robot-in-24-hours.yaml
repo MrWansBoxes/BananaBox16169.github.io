@@ -15,6 +15,7 @@ schedule:
 
 summary: "Banana Box divided into A Team and B Team, and each subteam built its own robot. Both robots were functional by the end of the 24-hour event and able to intake and score."
 context: "The build challenge was part of the broader Gear Up! Robot in 24 Hours event. Astro Box also participated."
+outreach: "During the event, we used Zoom calls to share progress, challenges, and lessons with other FTC teams."
 
 robotFacts:
   - "Built during Robot in 24 Hours."

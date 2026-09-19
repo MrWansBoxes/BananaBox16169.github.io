@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import OutreachList from "../components/OutreachList.astro";
+import RobotIn24Hours from "../components/RobotIn24Hours.astro";
 import Timeline from "../components/Timeline.astro";
 import outreach from "../data/outreach.yaml";
 import { getCurrentOutreach, toOutreachTimeline } from "../utils/outreach.js";
@@ -29,6 +30,7 @@ const currentTimeline = sortTimelineItems(toOutreachTimeline(currentOutreach));
       <p class="eyebrow">Outreach in detail</p>
       <h2 class="outreach-heading">Our Impact</h2>
       <OutreachList items={currentOutreach} />
+      <RobotIn24Hours />
     </div>
   </section>
 </Base>
