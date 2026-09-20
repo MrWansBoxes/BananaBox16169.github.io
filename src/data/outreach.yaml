@@ -24,7 +24,7 @@ entries:
         outreach: "Started the Gear Up! online workshop series for FLL and FTC teams."
       - date: "September 2026"
         sortDate: "2026-09"
-        outreach: "Continued weekly Gear Up! workshops and completed Robot in 24 Hours, building two functional robots while sharing progress and lessons with other FTC teams."
+        outreach: "Continued weekly Gear Up! workshops, completed Robot in 24 Hours, and participated in Wicked STEM."
     metrics: []
     photos: []
     instagramCta: "See Gear Up session posts and updates on Instagram"
@@ -72,6 +72,18 @@ entries:
           - date: "September 13, 2026"
             datetime: "2026-09-13"
             title: '"BioBuzz" Game Strategies and Programming'
+
+  - id: "wicked-stem-2026"
+    title: "Wicked STEM Festival"
+    startDate: "2026-09-19"
+    endDate: "2026-09-19"
+    dateLabel: "September 19, 2026"
+    seasons: ["biobuzz"]
+    description: "We participated in Wicked STEM, a festival where we connected with children and professionals and shared the excitement of FIRST robotics."
+    timelineEntries: []
+    metrics: []
+    photos: []
+    links: []
 
   - id: "ymca-library-april-2025"
     title: "Plaistow Public Library & Londonderry YMCA"

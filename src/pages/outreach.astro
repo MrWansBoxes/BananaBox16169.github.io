@@ -4,12 +4,16 @@ import OutreachList from "../components/OutreachList.astro";
 import RobotIn24Hours from "../components/RobotIn24Hours.astro";
 import Timeline from "../components/Timeline.astro";
 import outreach from "../data/outreach.yaml";
-import { getCurrentOutreach, toOutreachTimeline } from "../utils/outreach.js";
-import { sortTimelineItems } from "../utils/timeline.js";
+import robotIn24Hours from "../data/robot-in-24-hours.yaml";
+import { getCurrentOutreach, splitOutreachAroundDate } from "../utils/outreach.js";
+import { getCurrentTimeline } from "../utils/timeline.js";
 import { Content } from "../copy/outreach.md";
 
 const currentOutreach = getCurrentOutreach(outreach.entries);
-const currentTimeline = sortTimelineItems(toOutreachTimeline(currentOutreach));
+const currentTimeline = getCurrentTimeline(outreach.entries);
+const robotEventDate = robotIn24Hours.schedule.end.datetime.slice(0, 10);
+const { before: outreachBeforeRobot, after: outreachAfterRobot } =
+  splitOutreachAroundDate(currentOutreach, robotEventDate);
 ---
 <Base title="Outreach" description="How Banana Box brings FIRST to thousands of people.">
   <section class="wrap pagehead">
@@ -29,8 +33,9 @@ const currentTimeline = sortTimelineItems(toOutreachTimeline(currentOutreach));
     <div class="wrap">
       <p class="eyebrow">Outreach in detail</p>
       <h2 class="outreach-heading">Our Impact</h2>
-      <OutreachList items={currentOutreach} />
+      <OutreachList items={outreachBeforeRobot} />
       <RobotIn24Hours />
+      <OutreachList items={outreachAfterRobot} />
     </div>
   </section>
 </Base>

@@ -19,6 +19,14 @@ export const getSeasonOutreach = (entries, season) =>
       return aDate.localeCompare(bDate);
     });
 
+export const splitOutreachAroundDate = (entries, date) => {
+  const splitIndex = entries.findIndex((entry) => dateKey(entry).localeCompare(date) > 0);
+
+  return splitIndex === -1
+    ? { before: entries, after: [] }
+    : { before: entries.slice(0, splitIndex), after: entries.slice(splitIndex) };
+};
+
 export const toOutreachTimeline = (entries) =>
   entries.flatMap((entry) =>
     entry.timelineEntries || [{

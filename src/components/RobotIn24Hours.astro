@@ -19,11 +19,13 @@ const robotImages = {
 ---
 
 <section id="robot-in-24-hours" class="robot-event outreach-entry" aria-labelledby="robot-event-title">
-  <h3 id="robot-event-title">{robotIn24Hours.title}</h3>
-  <p class="robot-event__lede">
-    A 24-hour build challenge where our two robot subteams built functional robots while sharing progress and lessons with other FTC teams.
-  </p>
-  <details class="robot-event__details">
+  <div class="outreach-entry__meta"><span>September 12–13, 2026</span></div>
+  <div class="outreach-entry__body">
+    <h3 id="robot-event-title">{robotIn24Hours.title}</h3>
+    <p class="robot-event__lede">
+      A 24-hour build challenge where our two robot subteams built functional robots while sharing progress and lessons with other FTC teams.
+    </p>
+    <details class="robot-event__details">
     <summary>Explore Robot in 24 Hours</summary>
     <div class="robot-event__details-content">
       <section class="robot-event__overview" aria-labelledby="robot-event-overview-title">
@@ -126,20 +128,16 @@ const robotImages = {
         })}
       </div>
     </div>
-  </details>
+    </details>
+  </div>
 </section>
 
 <style>
   .robot-event {
     margin-top: clamp(2rem, 5vw, 3rem);
-    padding: var(--card-pad);
     scroll-margin-top: 90px;
-    background: var(--paper);
-    border: 2px solid var(--ink);
-    border-radius: var(--radius);
   }
-  .robot-event > h3 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); }
-  .robot-event__lede { max-width: 70ch; margin: 0.7rem 0 0; color: var(--bruise); }
+  .robot-event__lede { max-width: 70ch; margin: 0.6rem 0 0; color: var(--bruise); }
   .robot-event__details { margin-top: 1.2rem; }
   .robot-event__details summary {
     display: flex;
