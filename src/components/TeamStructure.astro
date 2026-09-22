@@ -14,7 +14,9 @@ import groups from "../data/team-groups.yaml";
         <h3>{group.name}</h3>
         <p>{group.description}</p>
         <ul>
-          {members.map((member) => <li>{member.name}</li>)}
+          {members.map((member) => (
+            <li>{member.name}{member.captain && <span class="team-group__badge"> — Captain</span>}</li>
+          ))}
         </ul>
       </article>
     );
@@ -51,6 +53,10 @@ import groups from "../data/team-groups.yaml";
     font-family: var(--font-mono);
     font-size: 0.82rem;
     font-weight: 600;
+  }
+  .team-group__badge {
+    color: var(--bruise);
+    font-weight: 500;
   }
   .team-group ul { margin-top: auto; }
   @media (max-width: 820px) {

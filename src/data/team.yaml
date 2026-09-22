@@ -6,7 +6,7 @@
 # ============================================================
 
 - name: "Rayhan Riaz"
-  role: "Team Captain, Main Driver"
+  role: "Lead Portfolio, Main Driver"
   photo: "team/Rayhan.png"
   currentGroup: "a-team"
   groupOrder: 5
@@ -18,10 +18,11 @@
   groupOrder: 7
 
 - name: "Ethan Deandrea"
-  role: "Lead Programmer, Second Driver"
+  role: "Lead Programmer, A Team Captain"
   photo: "team/Ethan.jpg"
   currentGroup: "a-team"
   groupOrder: 1
+  captain: true
 
 - name: "Kiaan Mehta"
   role: "Programmer, Drive Coach"
@@ -30,7 +31,7 @@
   groupOrder: 4
 
 - name: "Govind Valiyodiyil"
-  role: "Vice-Captain, Lead Designer"
+  role: "Strategy, Lead CAD"
   photo: "team/Govind.png"
   currentGroup: "a-team"
   groupOrder: 2
@@ -42,7 +43,7 @@
   groupOrder: 8
 
 - name: "Aditya Biju"
-  role: "Lead Mechanic, Co-Human Player"
+  role: "Lead Mechanic, Robot Design"
   photo: "team/Adi.png"
   currentGroup: "a-team"
   groupOrder: 3
@@ -60,10 +61,11 @@
   groupOrder: 3
 
 - name: "Akash"
-  role: "CAD, Mechanical"
+  role: "CAD, B Team Captain"
   photo: ""
   currentGroup: "b-team"
-  groupOrder: 2
+  groupOrder: 1
+  captain: true
 
 - name: "Sathvik"
   role: "CAD"
@@ -81,7 +83,7 @@
   role: "Programming, Portfolio"
   photo: ""
   currentGroup: "b-team"
-  groupOrder: 1
+  groupOrder: 2
 
 - name: "Tarun"
   role: "Programming"
