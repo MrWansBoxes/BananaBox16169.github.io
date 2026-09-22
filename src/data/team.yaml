@@ -8,14 +8,14 @@
 - name: "Rayhan Riaz"
   role: "Team Captain, Main Driver"
   photo: "team/Rayhan.png"
-  currentGroup: "neutral"
-  groupOrder: 1
+  currentGroup: "a-team"
+  groupOrder: 5
 
 - name: "Stefan Barbu"
   role: "Lead Scout, Mechanic"
   photo: "team/Stefan.png"
-  currentGroup: "neutral"
-  groupOrder: 3
+  currentGroup: "b-team"
+  groupOrder: 7
 
 - name: "Ethan Deandrea"
   role: "Lead Programmer, Second Driver"
@@ -38,8 +38,8 @@
 - name: "Matthew Dona"
   role: ""
   photo: "team/Matthew.png"
-  currentGroup: "neutral"
-  groupOrder: 4
+  currentGroup: "b-team"
+  groupOrder: 8
 
 - name: "Aditya Biju"
   role: "Lead Mechanic, Co-Human Player"
@@ -50,8 +50,8 @@
 - name: "Pranav Mantena"
   role: "Outreach, Human Player"
   photo: "team/Pradove.png"
-  currentGroup: "neutral"
-  groupOrder: 2
+  currentGroup: "a-team"
+  groupOrder: 6
 
 - name: "Isaac Lin"
   role: "Programming, CAD"
