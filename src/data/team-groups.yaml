@@ -5,7 +5,3 @@
 - id: "b-team"
   name: "B Team"
   description: "One of Banana Box's two robot subteams, working together to design, build, and program its own robot."
-
-- id: "neutral"
-  name: "Neutrals"
-  description: "Members who move between A Team and B Team, helping wherever their skills are needed."
