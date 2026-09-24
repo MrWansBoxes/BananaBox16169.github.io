@@ -5,56 +5,56 @@
 # Leave photo blank ("") to show initials instead.
 # ============================================================
 
-- name: "Rayhan Riaz"
+- name: "Rayhan"
   role: "Lead Portfolio, Main Driver"
   photo: "team/Rayhan.png"
   currentGroup: "a-team"
   groupOrder: 5
 
-- name: "Stefan Barbu"
+- name: "Stefan"
   role: "Lead Scout, Mechanic"
   photo: "team/Stefan.png"
   currentGroup: "b-team"
   groupOrder: 7
 
-- name: "Ethan Deandrea"
+- name: "Ethan"
   role: "Lead Programmer, A Team Captain"
   photo: "team/Ethan.jpg"
   currentGroup: "a-team"
   groupOrder: 1
   captain: true
 
-- name: "Kiaan Mehta"
+- name: "Kiaan"
   role: "Programmer, Drive Coach"
   photo: "team/Kiaan.png"
   currentGroup: "a-team"
   groupOrder: 4
 
-- name: "Govind Valiyodiyil"
+- name: "Govind"
   role: "Strategy, Lead CAD"
   photo: "team/Govind.png"
   currentGroup: "a-team"
   groupOrder: 2
 
-- name: "Matthew Dona"
+- name: "Matthew"
   role: ""
   photo: "team/Matthew.png"
   currentGroup: "b-team"
   groupOrder: 8
 
-- name: "Aditya Biju"
+- name: "Aditya"
   role: "Lead Mechanic, Robot Design"
   photo: "team/Adi.png"
   currentGroup: "a-team"
   groupOrder: 3
 
-- name: "Pranav Mantena"
+- name: "Pranav"
   role: "Outreach, Human Player"
   photo: "team/Pradove.png"
   currentGroup: "a-team"
   groupOrder: 6
 
-- name: "Isaac Lin"
+- name: "Isaac"
   role: "Programming, CAD"
   photo: ""
   currentGroup: "b-team"
@@ -73,13 +73,13 @@
   currentGroup: "b-team"
   groupOrder: 5
 
-- name: "Dhruv Singh"
+- name: "Dhruv"
   role: "CAD, Portfolio"
   photo: ""
   currentGroup: "b-team"
   groupOrder: 6
 
-- name: "Pranav Pakalapati"
+- name: "Pranav"
   role: "Programming, Portfolio"
   photo: ""
   currentGroup: "b-team"
