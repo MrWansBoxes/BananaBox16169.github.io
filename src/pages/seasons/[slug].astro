@@ -9,10 +9,10 @@ import TeamGrid from "../../components/TeamGrid.astro";
 import Timeline from "../../components/Timeline.astro";
 import decodeAwards from "../../data/seasons/decode/awards.yaml";
 import decodeMilestones from "../../data/seasons/decode/milestones.yaml";
+import decodeTeam from "../../data/seasons/decode/team.yaml";
 import outreach from "../../data/outreach.yaml";
 import robotIn24Hours from "../../data/robot-in-24-hours.yaml";
 import seasons from "../../data/seasons.yaml";
-import team from "../../data/team.yaml";
 import { getSeasonOutreach } from "../../utils/outreach.js";
 import { Content as DecodeRobot } from "../../copy/seasons/decode/robot.md";
 import { Content as DecodeWhoWeAre } from "../../copy/seasons/decode/who-we-are.md";
@@ -33,7 +33,6 @@ const decodeHighlights = [
   ...outreach.summaries.decode.metrics,
   { value: "4", label: "Robot Iterations" },
 ];
-const decodeTeam = team.filter((member) => member.photo && member.name !== "Sathvik");
 const gearUp = outreach.entries.find((entry) => entry.id === "gear-up-workshop-series");
 ---
 

@@ -1,0 +1,38 @@
+# ============================================================
+# DECODE (2025–2026) ROSTER  —  frozen archive of who was on the
+# team that season and their roles at the time.
+# Edit src/data/team.yaml for the CURRENT roster instead.
+# "photo" works the same as in team.yaml (blank = initials).
+# ============================================================
+
+- name: "Rayhan"
+  role: "Team Captain, Main Driver"
+  photo: "team/Rayhan.png"
+
+- name: "Stefan"
+  role: "Lead Scout, Mechanic"
+  photo: "team/Stefan.png"
+
+- name: "Ethan"
+  role: "Lead Programmer, Second Driver"
+  photo: "team/Ethan.jpg"
+
+- name: "Kiaan"
+  role: "Programmer, Drive Coach"
+  photo: "team/Kiaan.png"
+
+- name: "Govind"
+  role: "Vice-Captain, Lead Designer"
+  photo: "team/Govind.png"
+
+- name: "Matthew"
+  role: ""
+  photo: "team/Matthew.png"
+
+- name: "Aditya"
+  role: "Lead Mechanic, Co-Human Player"
+  photo: "team/Adi.png"
+
+- name: "Pranav"
+  role: "Outreach, Human Player"
+  photo: "team/Pradove.png"
