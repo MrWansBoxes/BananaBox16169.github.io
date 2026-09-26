@@ -1,5 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import site from "../data/site.yaml";
+import wickedStemA from "../assets/images/seasons/biobuzz/WickedSTEM/WickedSTEMA.JPG";
+import wickedStemB from "../assets/images/seasons/biobuzz/WickedSTEM/WickedSTEMB.JPG";
 const { items } = Astro.props;
 ---
 
@@ -37,6 +40,24 @@ const { items } = Astro.props;
               <li><strong>{metric.value}</strong> {metric.label}</li>
             ))}
           </ul>
+        )}
+        {item.id === "wicked-stem-2026" && (
+          <div class="wicked-stem-photos">
+            {[wickedStemA, wickedStemB].map((photo) => (
+              <Image
+                src={photo}
+                alt="Banana Box at Wicked STEM 2026"
+                width={photo.width}
+                height={photo.height}
+                widths={[320, 480, 640, 800, 1024]}
+                sizes="(max-width: 640px) calc(100vw - 96px), (max-width: 900px) calc(90vw - 272px), (max-width: 1200px) calc(45vw - 148px), 390px"
+                format="webp"
+                quality={82}
+                loading="lazy"
+                decoding="async"
+              />
+            ))}
+          </div>
         )}
         {item.photos?.length > 0 && (
           <div class="outreach-entry__photos">
@@ -132,6 +153,24 @@ const { items } = Astro.props;
     width: 100%;
     border: 2px solid var(--ink);
     border-radius: var(--radius);
+  }
+  .wicked-stem-photos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    padding: 0 8px 8px 0;
+  }
+  .wicked-stem-photos img {
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+  @media (max-width: 900px) {
+    .wicked-stem-photos { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     :global(.outreach-entry) { grid-template-columns: 1fr; gap: 0.5rem; }
