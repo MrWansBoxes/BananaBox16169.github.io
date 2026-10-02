@@ -49,7 +49,7 @@
   groupOrder: 3
 
 - name: "Pranav"
-  role: "Outreach, Human Player"
+  role: "Lead Outreach, Human Player"
   photo: "team/Pradove.png"
   currentGroup: "a-team"
   groupOrder: 6
@@ -68,7 +68,7 @@
   captain: true
 
 - name: "Sathvik"
-  role: "CAD"
+  role: "CAD, Outreach"
   photo: "team/Sathvik.jpeg"
   currentGroup: "b-team"
   groupOrder: 5
