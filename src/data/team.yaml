@@ -5,24 +5,18 @@
 # Leave photo blank ("") to show initials instead.
 # ============================================================
 
-- name: "Rayhan"
-  role: "Lead Portfolio, Main Driver"
-  photo: "team/Rayhan.png"
-  currentGroup: "a-team"
-  groupOrder: 5
-
-- name: "Stefan"
-  role: "Lead Scout, Mechanic"
-  photo: "team/Stefan.png"
-  currentGroup: "b-team"
-  groupOrder: 7
-
 - name: "Ethan"
   role: "Lead Programmer, A Team Captain"
   photo: "team/Ethan.jpg"
   currentGroup: "a-team"
   groupOrder: 1
   captain: true
+
+- name: "Rayhan"
+  role: "Lead Portfolio, Main Driver"
+  photo: "team/Rayhan.png"
+  currentGroup: "a-team"
+  groupOrder: 5
 
 - name: "Kiaan"
   role: "Programmer, Drive Coach"
@@ -36,12 +30,6 @@
   currentGroup: "a-team"
   groupOrder: 2
 
-- name: "Matthew"
-  role: ""
-  photo: "team/Matthew.png"
-  currentGroup: "b-team"
-  groupOrder: 8
-
 - name: "Aditya"
   role: "Lead Mechanic, Robot Design"
   photo: "team/Adi.png"
@@ -54,18 +42,30 @@
   currentGroup: "a-team"
   groupOrder: 6
 
-- name: "Isaac"
-  role: "Programming, CAD"
-  photo: ""
-  currentGroup: "b-team"
-  groupOrder: 3
-
 - name: "Akash"
   role: "CAD, B Team Captain"
   photo: ""
   currentGroup: "b-team"
   groupOrder: 1
   captain: true
+
+- name: "Stefan"
+  role: "Lead Scout, Mechanic"
+  photo: "team/Stefan.png"
+  currentGroup: "b-team"
+  groupOrder: 7
+
+- name: "Matthew"
+  role: ""
+  photo: "team/Matthew.png"
+  currentGroup: "b-team"
+  groupOrder: 8
+
+- name: "Isaac"
+  role: "Programming, CAD"
+  photo: ""
+  currentGroup: "b-team"
+  groupOrder: 3
 
 - name: "Sathvik"
   role: "CAD, Outreach"
