@@ -19,7 +19,7 @@ const { items } = Astro.props;
         <p>{item.description}</p>
         {item.sessionGroups?.length > 0 && (
           <div class="outreach-entry__sessions">
-            <h4>Sessions so far</h4>
+            <h4>Sessions</h4>
             <div class="outreach-entry__session-groups">
               {item.sessionGroups.map((group) => (
                 <section class="outreach-entry__session-group">

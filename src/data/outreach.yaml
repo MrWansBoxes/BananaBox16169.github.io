@@ -13,18 +13,17 @@ entries:
   - id: "gear-up-workshop-series"
     title: "Gear Up! FLL and FTC Online Workshop Series"
     startDate: "2026-08"
-    endDate: ""
-    dateLabel: "Started August 2026"
+    endDate: "2026-09-27"
+    dateLabel: "August–September 2026"
     seasons: ["biobuzz"]
-    status: "Ongoing"
-    description: "Gear Up! is Banana Box's ongoing online workshop series for FLL and FTC teams. Through weekly sessions, we share technical skills, robot-design ideas, programming concepts, FIRST resources, engineering process and strategy, and lessons we have learned with other teams."
+    description: "Gear Up! was Banana Box's online workshop series for FLL and FTC teams. Through weekly sessions, we shared technical skills, robot-design ideas, programming concepts, FIRST resources, engineering process and strategy, and lessons we had learned with other teams."
     timelineEntries:
       - date: "August 2026"
         sortDate: "2026-08"
         outreach: "Started the Gear Up! online workshop series for FLL and FTC teams."
       - date: "September 2026"
         sortDate: "2026-09"
-        outreach: "Continued weekly Gear Up! workshops, completed Robot in 24 Hours, and participated in Wicked STEM."
+        outreach: "Completed Gear Up! and Robot in 24 Hours, and participated in Wicked STEM."
     metrics: []
     photos: []
     instagramCta: "See Gear Up session posts and updates on Instagram"
@@ -49,6 +48,12 @@ entries:
           - date: "September 12, 2026"
             datetime: "2026-09-12"
             title: "How to Build a Better Base Robot"
+          - date: "September 19, 2026"
+            datetime: "2026-09-19"
+            title: "Robot Alignment and Line Followers"
+          - date: "September 26, 2026"
+            datetime: "2026-09-26"
+            title: "Python Programming"
       - title: "FTC"
         sessions:
           - date: "August 9, 2026"
@@ -72,6 +77,12 @@ entries:
           - date: "September 13, 2026"
             datetime: "2026-09-13"
             title: '"BioBuzz" Game Strategies and Programming'
+          - date: "September 20, 2026"
+            datetime: "2026-09-20"
+            title: "Engineering Portfolio and Community Outreach"
+          - date: "September 27, 2026"
+            datetime: "2026-09-27"
+            title: "Coaches Panel"
 
   - id: "wicked-stem-2026"
     title: "Wicked STEM Festival"
@@ -81,6 +92,21 @@ entries:
     seasons: ["biobuzz"]
     description: "We participated in Wicked STEM, a festival where we connected with children and professionals and shared the excitement of FIRST robotics."
     timelineEntries: []
+    metrics: []
+    photos: []
+    links: []
+
+  - id: "mit-urtc-2026"
+    title: "MIT Undergraduate Research Technology Conference"
+    startDate: "2026-10-11"
+    endDate: "2026-10-11"
+    dateLabel: "October 11, 2026"
+    seasons: ["biobuzz"]
+    description: "We participated in the MIT Undergraduate Research Technology Conference."
+    timelineEntries:
+      - date: "October 2026"
+        sortDate: "2026-10-11"
+        outreach: "Participated in the MIT Undergraduate Research Technology Conference."
     metrics: []
     photos: []
     links: []

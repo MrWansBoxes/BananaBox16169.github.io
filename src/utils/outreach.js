@@ -1,12 +1,14 @@
 export const CURRENT_OUTREACH_CUTOFF = "2026-01";
 
 const dateKey = (entry) => entry.endDate || entry.startDate || "";
+// Place current events by when they began, including completed workshop series.
+const startDateKey = (entry) => entry.startDate || entry.endDate || "";
 
 export const getCurrentOutreach = (entries) =>
   [...entries]
     .filter((entry) =>
       dateKey(entry) >= CURRENT_OUTREACH_CUTOFF || entry.seasons.includes("biobuzz"))
-    .sort((a, b) => dateKey(a).localeCompare(dateKey(b)));
+    .sort((a, b) => startDateKey(a).localeCompare(startDateKey(b)));
 
 export const getSeasonOutreach = (entries, season) =>
   [...entries]
@@ -20,7 +22,7 @@ export const getSeasonOutreach = (entries, season) =>
     });
 
 export const splitOutreachAroundDate = (entries, date) => {
-  const splitIndex = entries.findIndex((entry) => dateKey(entry).localeCompare(date) > 0);
+  const splitIndex = entries.findIndex((entry) => startDateKey(entry).localeCompare(date) > 0);
 
   return splitIndex === -1
     ? { before: entries, after: [] }
