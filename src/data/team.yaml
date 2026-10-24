@@ -75,13 +75,13 @@
 
 - name: "Dhruv"
   role: "CAD, Portfolio"
-  photo: ""
+  photo: "team/Dhruv.jpeg"
   currentGroup: "b-team"
   groupOrder: 6
 
 - name: "Pranav P"
   role: "Programming, Portfolio"
-  photo: ""
+  photo: "team/Pranav_P.jpeg"
   currentGroup: "b-team"
   groupOrder: 2
 
