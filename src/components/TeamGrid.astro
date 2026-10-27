@@ -40,6 +40,7 @@ const widthsFor = (photo) => {
                 loading={isEager ? "eager" : "lazy"}
                 decoding="async"
                 fetchpriority={index === 0 && isEager ? "high" : "auto"}
+                style={m.photoPosition ? `object-position: ${m.photoPosition}` : undefined}
               />
             : <span class="member__initials">{initials(m.name)}</span>}
         </div>

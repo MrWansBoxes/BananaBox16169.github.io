@@ -3,6 +3,8 @@
 # "photo" is OPTIONAL: drop a photo in  src/assets/images/team/
 # and put its file name here (e.g. photo: "team/rayhan.jpg").
 # Leave photo blank ("") to show initials instead.
+# "photoPosition" is OPTIONAL: a CSS object-position (e.g. "top" or
+# "50% 20%") to move the square crop so the face is in frame.
 # ============================================================
 
 - name: "Ethan"
@@ -15,24 +17,27 @@
 - name: "Rayhan"
   role: "Lead Portfolio, Main Driver"
   photo: "team/Rayhan.png"
+  photoPosition: "50% 20%"
   currentGroup: "a-team"
   groupOrder: 5
 
 - name: "Kiaan"
   role: "Programmer, Drive Coach"
-  photo: "team/Kiaan.png"
+  photo: "team/Kiaan-headshot.jpg"
   currentGroup: "a-team"
   groupOrder: 4
 
 - name: "Govind"
   role: "Strategy, Lead CAD"
   photo: "team/Govind.png"
+  photoPosition: "top"
   currentGroup: "a-team"
   groupOrder: 2
 
 - name: "Aditya"
   role: "Lead Mechanic, Robot Design"
   photo: "team/Adi.png"
+  photoPosition: "top"
   currentGroup: "a-team"
   groupOrder: 3
 
@@ -63,7 +68,7 @@
 
 - name: "Isaac"
   role: "Programming, CAD"
-  photo: ""
+  photo: "team/Isaac.jpg"
   currentGroup: "b-team"
   groupOrder: 3
 
